@@ -22,23 +22,39 @@ namespace HO2Server.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            var users = new List<User>()
+            var mates = new List<Mate>()
             {
-                new User { UserName =  "CLong" , FirstName = "Cormac", LastName = "Long"},
-                new User { UserName =  "MZaatar", FirstName = "Moahmed", LastName = "Zaatar"},
+                new Mate { Email =  "Cromac.Long@readify.net" , FirstName = "Cormac", LastName = "Long"},
+                new Mate { Email =  "Mohamed.Zaatar@readify.net", FirstName = "Moahmed", LastName = "Zaatar"},
             };
-            users.ForEach(s => context.Users.Add(s));
+            mates.ForEach(s => context.Mates.Add(s));
             context.SaveChanges();
 
             var groups = new List<FriendGroup>
             {
-                new FriendGroup {FriendGroupName = "Readify WA" , FriendGroupDetails = "Readify WA Group" , FriendGroupAdminUser = users.Find(s=>s.UserName == "MZAATAR")},
-                new FriendGroup {FriendGroupName = "Folk" , FriendGroupDetails = "Folk WA Group" , FriendGroupAdminUser = users.Find(s=>s.UserName == "CLONG")}
+                new FriendGroup {FriendGroupName = "Readify WA" , FriendGroupDetails = "Readify WA Group" , FriendGroupAdminUser = mates.FirstOrDefault()},
+                new FriendGroup {FriendGroupName = "Folk" , FriendGroupDetails = "Folk WA Group" , FriendGroupAdminUser = mates.FirstOrDefault()}
             };
 
             groups.ForEach(g => context.Groups.Add(g));
             context.SaveChanges();
 
+            foreach (var u in mates)
+            {
+                u.FriendGroups.Add(groups.FirstOrDefault());
+            }
+            context.SaveChanges();
+
+
+            var places = new List<Place>()
+            {
+                new Place { PlaceName = "Cambridge Library"},
+                new Place { PlaceName = "Ezra Pound"},
+            };
+            places.ForEach(s => context.Places.Add(s));
+            context.SaveChanges();
+
+           
         }
     }
 }

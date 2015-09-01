@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace HO2Server.Models.Business
 {
@@ -8,7 +9,7 @@ namespace HO2Server.Models.Business
     {
         public FriendGroup()
         {
-            this.Users = new List<User>();
+            this.Mates = new List<Mate>();
         }
 
         [Key, Column(Order = 0)]
@@ -25,10 +26,11 @@ namespace HO2Server.Models.Business
         public string FriendGroupDetails { get; set; }
 
         [Column("AdminUserID")]
-        public User FriendGroupAdminUser { get; set; }
+        public Mate FriendGroupAdminUser { get; set; }
 
 
-        public virtual  IList<User> Users { get; set; }
+        [JsonIgnore]
+        public virtual  IList<Mate> Mates { get; set; }
 
         }
 }

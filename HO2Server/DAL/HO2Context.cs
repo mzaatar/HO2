@@ -14,7 +14,7 @@ namespace HO2Server.DAL
         }
 
         public DbSet<FriendGroup> Groups { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<Mate> Mates { get; set; }
         public DbSet<Vote> Votes { get; set; }
         public DbSet<Place> Places { get; set; }
 
@@ -24,7 +24,7 @@ namespace HO2Server.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Entity<FriendGroup>().
-                HasMany(c => c.Users).
+                HasMany(c => c.Mates).
                 WithMany(p => p.FriendGroups).
                 Map(
                     m =>

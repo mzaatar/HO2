@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2Server", "HO2Server\HO2S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2Server.Tests", "HO2Server.Tests\HO2Server.Tests.csproj", "{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAngularJS", "ClientAngularJS\ClientAngularJS.csproj", "{35BAE225-A3FF-4CD0-868F-31643F96A144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAngularJS.Tests", "ClientAngularJS.Tests\ClientAngularJS.Tests.csproj", "{00BCD205-4F0E-4BEB-834B-FF62A416179D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BAE225-A3FF-4CD0-868F-31643F96A144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BAE225-A3FF-4CD0-868F-31643F96A144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BAE225-A3FF-4CD0-868F-31643F96A144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BAE225-A3FF-4CD0-868F-31643F96A144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00BCD205-4F0E-4BEB-834B-FF62A416179D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00BCD205-4F0E-4BEB-834B-FF62A416179D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00BCD205-4F0E-4BEB-834B-FF62A416179D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00BCD205-4F0E-4BEB-834B-FF62A416179D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

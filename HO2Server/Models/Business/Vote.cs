@@ -16,7 +16,7 @@ namespace HO2Server.Models.Business
         [Required]
         public FriendGroup FriendGroup { get; set; }
         [Required]
-        public User User { get; set; }
+        public Mate Mate { get; set; }
         [Required]
         public DateTime SuggestedDateTime { get; set; }
         [Required]

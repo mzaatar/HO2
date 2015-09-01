@@ -1,0 +1,52 @@
+﻿
+
+<div ng-controller="MatesController as vm">
+    <h4 style="color: blue;"> All Mates</h4>
+    <div>{{vm.error}}</div>
+
+    <form name="getAll" ng-submit="vm.getAllMates()" style="background-color: orange;">
+        <input type="submit" value="Get All Mates"/>
+
+        <table style="border: 1px solid red;" ng-show="vm.mateList">
+            <thead>
+            <tr>
+                <td>Id</td>
+                <td>Username</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="m in vm.mateList">
+                <td>{{m.MateId}}</td>
+                <td>{{m.Email}}</td>
+                <td>{{m.FirstName}}</td>
+                <td>{{m.LastName}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+
+    <form name="searchUser" ng-submit="vm.search(id)" style="background-color: green;">
+        <input type="search" required ng-model="id" placeholder="Please enter id"/>
+        <input type="submit" value="Search"/>
+
+        <div ng-show="vm.mate">
+            <h1>Username : {{vm.mate.Email}}</h1>
+            <h1>First Name : {{vm.mate.FirstName}}</h1>
+            <h1>Last Name : {{vm.mate.LastName}}</h1>
+        </div>
+    </form>
+
+
+    <form name="addNewMate" ng-submit="vm.addMate(newmate)" style="background-color: rosybrown;">
+        <input type="email" required placeholder="Email Addess as Username" ng-model="newmate.email"/>
+        <input type="text" required placeholder="First Name" ng-model="newmate.firstname" />
+        <input type="text" required placeholder="Last Name" ng-model="newmate.lastname" />
+
+         <input type="submit" value="Add" />
+
+    </form>
+
+</div>

@@ -1,23 +1,27 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
+using System.Xml;
+using Newtonsoft.Json;
 
 namespace HO2Server.Models.Business
 {
-    public class User
+    public class Mate
     {
-        public User()
+        public Mate()
         {
             this.FriendGroups = new List<FriendGroup>();
         }
         [Key, Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 
-        public int UserId { get; set; }
+        public int MateId { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string UserName { get; set; }
+        [Index("IX_UniqueEmail", IsUnique = true)]
+        public string Email { get; set; }
 
         [Required]
         [MaxLength(100)]
@@ -27,6 +31,7 @@ namespace HO2Server.Models.Business
         [MaxLength(100)]
         public string LastName { get; set; }
 
+        [JsonIgnore]
         public virtual IList<FriendGroup> FriendGroups { get; set; }
     }
 }
