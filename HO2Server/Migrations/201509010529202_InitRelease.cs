@@ -1,6 +1,5 @@
 namespace HO2Server.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
     
     public partial class InitRelease : DbMigration

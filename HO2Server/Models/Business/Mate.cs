@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data;
-using System.Xml;
 using Newtonsoft.Json;
 
 namespace HO2Server.Models.Business

@@ -6,17 +6,17 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace HO2Server.DAL
 {
-    public class HO2Context : DbContext
+    public class HO2Context : DbContext , IHO2Context
     {
 
         public HO2Context() : base("HO2Context")
         {
         }
 
-        public DbSet<FriendGroup> Groups { get; set; }
-        public DbSet<Mate> Mates { get; set; }
-        public DbSet<Vote> Votes { get; set; }
-        public DbSet<Place> Places { get; set; }
+        public IDbSet<FriendGroup> Groups { get; set; }
+        public IDbSet<Mate> Mates { get; set; }
+        public IDbSet<Vote> Votes { get; set; }
+        public IDbSet<Place> Places { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
