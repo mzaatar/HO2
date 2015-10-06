@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace HO2Server.Models.Business
+namespace HO2.Domain.Models.Business
 {
     public class Place
     {

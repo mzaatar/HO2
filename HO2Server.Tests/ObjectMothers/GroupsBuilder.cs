@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HO2Server.DAL;
-using HO2Server.Models.Business;
+﻿
+using HO2.Domain.DAL;
+using HO2.Domain.Models.Business;
+
 
 namespace HO2Server.Tests.ObjectMothers
 {

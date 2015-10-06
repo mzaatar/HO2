@@ -129,6 +129,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HO2.Domain\HO2.Domain.csproj">
+      <Project>{fdb785be-2cdf-4375-b28c-844c0fca4437}</Project>
+      <Name>HO2.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HO2Server\HO2Server.csproj">
       <Project>{AB668F9C-C654-4A27-AA71-5094A8DEA27B}</Project>
       <Name>HO2Server</Name>

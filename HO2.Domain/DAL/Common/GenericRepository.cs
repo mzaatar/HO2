@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace HO2Server.DAL.Common
+namespace HO2.Domain.DAL.Common
 {
     /// <summary>
     /// Generic Repository class for Entity Operations

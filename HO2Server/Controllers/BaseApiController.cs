@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
 using System.Web.Http;
-using HO2Server.DAL.Common;
+using HO2.Domain.DAL.Common;
 
 namespace HO2Server.Controllers
 {

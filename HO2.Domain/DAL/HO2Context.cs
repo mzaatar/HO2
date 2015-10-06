@@ -1,11 +1,11 @@
 ﻿
 
 using System.Data.Entity;
-using HO2Server.Models.Business;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using HO2Server.Migrations;
+using HO2.Domain.Migrations;
+using HO2.Domain.Models.Business;
 
-namespace HO2Server.DAL
+namespace HO2.Domain.DAL
 {
     public class HO2Context : DbContext , IHO2Context
     {

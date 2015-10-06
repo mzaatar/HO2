@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Newtonsoft.Json;
 
-namespace HO2Server.Models.Business
+namespace HO2.Domain.Models.Business
 {
     public class Mate
     {

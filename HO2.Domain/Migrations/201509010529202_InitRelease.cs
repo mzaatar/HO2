@@ -1,7 +1,7 @@
-namespace HO2Server.Migrations
+using System.Data.Entity.Migrations;
+
+namespace HO2.Domain.Migrations
 {
-    using System.Data.Entity.Migrations;
-    
     public partial class InitRelease : DbMigration
     {
         public override void Up()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
-namespace HO2Server.DAL.Common
+namespace HO2.Domain.DAL.Common
 {
     public interface IGenericRepository<T> where T : class
     {

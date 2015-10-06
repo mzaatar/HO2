@@ -1,5 +1,5 @@
-﻿using HO2Server.Models.Business;
-using HO2Server.DAL.Common;
+﻿using HO2.Domain.DAL.Common;
+using HO2.Domain.Models.Business;
 
 namespace HO2Server.Controllers
 {

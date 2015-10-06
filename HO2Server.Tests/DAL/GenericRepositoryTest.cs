@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HO2Server.DAL.Common;
-using HO2Server.Models.Business;
+using HO2.Domain.DAL;
+using HO2.Domain.DAL.Common;
+using HO2.Domain.Models.Business;
 using NUnit.Framework;
-using HO2Server.DAL;
 using NSubstitute;
 using Shouldly;
 

@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using HO2Server.Models.Business;
+using HO2.Domain.Models.Business;
 
-namespace HO2Server.DAL
+namespace HO2.Domain.DAL
 {
     public interface IHO2Context
     {

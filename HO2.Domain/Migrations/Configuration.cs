@@ -1,19 +1,20 @@
 using System.Collections.Generic;
-using HO2Server.Models.Business;
+using HO2.Domain.DAL;
+using HO2.Domain.Models.Business;
 
-namespace HO2Server.Migrations
+namespace HO2.Domain.Migrations
 {
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<HO2Server.DAL.HO2Context>
+    internal sealed class Configuration : DbMigrationsConfiguration<HO2Context>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(HO2Server.DAL.HO2Context context)
+        protected override void Seed(HO2Context context)
         {
             //  This method will be called after migrating to the latest version.
 
