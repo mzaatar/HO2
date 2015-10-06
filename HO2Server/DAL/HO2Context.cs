@@ -13,6 +13,10 @@ namespace HO2Server.DAL
         {
         }
 
+        public HO2Context(string connectionString) : base(connectionString)
+        {
+        }
+
         public IDbSet<FriendGroup> Groups { get; set; }
         public IDbSet<Mate> Mates { get; set; }
         public IDbSet<Vote> Votes { get; set; }

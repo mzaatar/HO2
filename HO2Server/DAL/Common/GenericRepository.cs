@@ -16,15 +16,8 @@ namespace HO2Server.DAL.Common
     /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        //#region Private member variables...
-
         internal HO2Context Db;
         public IDbSet<T> DbSet { get; set; }
-
-
-        //#endregion
-
-        #region Public Constructor...
 
         public GenericRepository()
         {
@@ -32,11 +25,12 @@ namespace HO2Server.DAL.Common
            DbSet = ((HO2Context)Db).Set<T>();
         }
 
-        #endregion
+        public GenericRepository(string connectionString)
+        {
+            Db = new HO2Context(connectionString);
+            DbSet = ((HO2Context)Db).Set<T>();
+        }
 
-        #region Public member methods...
-
-       
         public virtual IEnumerable<T> Get()
         {
             IQueryable<T> query = DbSet;
@@ -74,7 +68,13 @@ namespace HO2Server.DAL.Common
 
         public virtual bool Delete(T entityToDelete)
         {
-            return Delete(entityToDelete);
+            if (Exists(entityToDelete))
+            {
+                DbSet.Remove(entityToDelete);
+                this.Save();
+                return true;
+            }
+            return false;
         }
 
         public virtual void Update(T entityToUpdate)
@@ -164,7 +164,5 @@ namespace HO2Server.DAL.Common
         {
             return DbSet.Count();
         }
-
-        #endregion
     }
 }
