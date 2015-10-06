@@ -383,7 +383,6 @@ namespace HO2Server.Controllers
             base.Dispose(disposing);
         }
 
-        #region Helpers
 
         private IAuthenticationManager Authentication
         {
@@ -487,7 +486,5 @@ namespace HO2Server.Controllers
                 return HttpServerUtility.UrlTokenEncode(data);
             }
         }
-
-        #endregion
     }
 }
