@@ -1,40 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using HO2Server.Controllers;
 using HO2Server.DAL.Common;
 using HO2Server.Models.Business;
+using NUnit.Framework;
+using HO2Server.DAL;
 using NSubstitute;
-using Xunit;
+using Shouldly;
 
 namespace HO2Server.Tests.DAL
 {
+    [TestFixture]
     public class GenericRepositoryTest
     {
-        [Fact]
-        public void InsertMateAndCheckIfItIsRecieved()
+        private HO2Context db;
+        [SetUp]
+        public void Init()
+        {
+            db = new HO2Context("HO2Context.Test");
+        }
+
+        [Test]
+        public void Insert_mate_then_it_should_received()
         {
             // Arrange
-            var mate = new ObjectMothers.MatesBuilder().withDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
 
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
             
             // Act
             repoStub.Insert(mate);
             
-            
             // Assert
             repoStub.Received().Insert(mate);
+            repoStub.ContextCount().ShouldBe(1);
         }
 
-        [Fact]
+        [Test]
         public void InsertMateAndRetrieveIt()
         {
             // Arrange
-            var mate = new ObjectMothers.MatesBuilder().withDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
 
             // Act
@@ -47,17 +52,17 @@ namespace HO2Server.Tests.DAL
             repoStub.GetSingle(s => s.MateId == mate.MateId).Returns(mate);
         }
 
-        [Fact]
+        [Test]
         public void InsertTwoMateAndCheckIfTheyAreRecieved()
         {
             // Arrange
             var allMates = new List<Mate>();
-            allMates.Add(new ObjectMothers.MatesBuilder().withDefault().build());
-            allMates.Add(new ObjectMothers.MatesBuilder()
-                .withEmail("mzaatar@outlook.com")
-                .withFristName("Mohamed")
-                .withLastName("Gerg")
-                .withId(2)
+            allMates.Add(new ObjectMothers.MatesBuilder(db).WithDefault().build());
+            allMates.Add(new ObjectMothers.MatesBuilder(db)
+                .WithEmail("mzaatar@outlook.com")
+                .WithFristName("Mohamed")
+                .WithLastName("Gerg")
+                .WithId(2)
                 .build());
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
 
@@ -72,10 +77,10 @@ namespace HO2Server.Tests.DAL
             repoStub.ContextCount().Returns(2);
         }
 
-        [Fact]
+        [Test]
         public void DeleteExistedMateReturnTrue()
         {
-            var mate = new ObjectMothers.MatesBuilder().withDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
 
             // Act
@@ -89,10 +94,10 @@ namespace HO2Server.Tests.DAL
         }
 
 
-        [Fact]
+        [Test]
         public void UpdateExistedMateAndCheckChanges()
         {
-            var mate = new ObjectMothers.MatesBuilder().withDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
             repoStub.DbSet.Add(mate);
             mate.LastName = "Davids";
@@ -105,10 +110,10 @@ namespace HO2Server.Tests.DAL
 
         }
 
-        [Fact]
+        [Test]
         public void SetDbSetWithObjectAndCheckIfExits()
         {
-            var mate = new ObjectMothers.MatesBuilder().withDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
             var repoStub = Substitute.For<IGenericRepository<Mate>>();
             repoStub.DbSet.Add(mate);
 
@@ -120,16 +125,16 @@ namespace HO2Server.Tests.DAL
 
         }
 
-        [Fact]
-        public void GetGroupWithAdminAndCheckIfItIsRecieved()
+        [Test]
+        public void GetGroupWithAdminAndCheckIfItIsReceived()
         {
             //// Arrange
             //var mate = new ObjectMothers.MatesBuilder()
-            //    .withDefault()
+            //    .WithDefault()
             //    .build();
             //var group = new ObjectMothers.GroupsBuilder()
-            //    .withDefault()
-            //    .withMateAdmin(mate)
+            //    .WithDefault()
+            //    .WithMateAdmin(mate)
             //    .build();
 
             //var repoStub = Substitute.For<IGenericRepository<FriendGroup>>();

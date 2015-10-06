@@ -9,7 +9,7 @@ namespace HO2Server.DAL
     public class HO2Context : DbContext , IHO2Context
     {
 
-        public HO2Context() : base("HO2Context")
+        public HO2Context() : base("HO2Context.Web")
         {
         }
 

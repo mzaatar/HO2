@@ -1,25 +1,24 @@
-﻿//using System.Web.Mvc;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using HO2Server;
-//using HO2Server.Controllers;
+﻿using System.Web.Mvc;
+using HO2Server.Controllers;
+using NUnit.Framework;
 
-//namespace HO2Server.Tests.Controllers
-//{
-//    [TestClass]
-//    public class HomeControllerTest
-//    {
-//        [TestMethod]
-//        public void Index()
-//        {
-//            // Arrange
-//            HomeController controller = new HomeController();
+namespace HO2Server.Tests.Controllers
+{
+    [TestFixture]
+    public class HomeControllerTest
+    {
+        [Test]
+        public void Index()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
 
-//            // Act
-//            ViewResult result = controller.Index() as ViewResult;
+            // Act
+            ViewResult result = controller.Index() as ViewResult;
 
-//            // Assert
-//            Assert.IsNotNull(result);
-//            Assert.AreEqual("Home Page", result.ViewBag.Title);
-//        }
-//    }
-//}
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.AreEqual("Home Page", result.ViewBag.Title);
+        }
+    }
+}

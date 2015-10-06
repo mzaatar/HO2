@@ -3,41 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HO2Server.DAL;
 using HO2Server.Models.Business;
 
 namespace HO2Server.Tests.ObjectMothers
 {
     public class GroupsBuilder
     {
-        FriendGroup _group = new FriendGroup();
+        private FriendGroup _group = new FriendGroup();
+        private IHO2Context db;
 
-        public GroupsBuilder withDefault()
+
+        public GroupsBuilder WithDefault()
         {
             return this
-                .withId(1)
-                .withName("Default Group")
-                .withDetails("Default Details");
+                .WithId(1)
+                .WithName("Default Group")
+                .WithDetails("Default Details");
         }
 
-        public GroupsBuilder withId(int id)
+        public GroupsBuilder WithId(int id)
         {
             _group.FriendGroupId = id;
             return this;
         }
 
-        public GroupsBuilder withName(string name)
+        public GroupsBuilder WithName(string name)
         {
             _group.FriendGroupName = name;
             return this;
         }
 
-        public GroupsBuilder withDetails(string details)
+        public GroupsBuilder WithDetails(string details)
         {
             _group.FriendGroupDetails = details;
             return this;
         }
 
-        public GroupsBuilder withMateAdmin(Mate mate)
+        public GroupsBuilder WithMateAdmin(Mate mate)
         {
             _group.FriendGroupAdminUser = mate;
             return this;

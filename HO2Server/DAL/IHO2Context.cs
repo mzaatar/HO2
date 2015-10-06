@@ -12,6 +12,5 @@ namespace HO2Server.DAL
         IDbSet<Place> Places { get; set; }
 
         int SaveChanges();
-
     }
 }

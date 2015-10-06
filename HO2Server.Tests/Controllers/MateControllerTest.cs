@@ -1,14 +1,12 @@
 ﻿
-using HO2Server.Controllers;
-using HO2Server.DAL.Common;
-using HO2Server.Models.Business;
-using Xunit;
+using NUnit.Framework;
 
 namespace HO2Server.Tests.Controllers
 {
+    [TestFixture]
     public class MateControllerTest
     {
-        [Fact]
+        [Test]
         public void GetAllMatesReturnsEverythingInRepository()
         {
             //// Arrange
@@ -31,12 +29,12 @@ namespace HO2Server.Tests.Controllers
             //Assert.Same(allMates, result);
         }
 
-        [Fact]
+        [Test]
         public void GetMateByIdReturnsItFormReposirtory()
         {
             //// Arrange
             //var mate = new ObjectMothers.MateBuilder()
-            //    .withDefault().build();
+            //    .WithDefault().build();
 
             //var repoStub = NSubstitute.Substitute.For<IGenericRepository<Mate>>();
             //repoStub.Insert(mate);
@@ -50,12 +48,12 @@ namespace HO2Server.Tests.Controllers
         }
 
 
-        [Fact]
-        public void PostMateAndCheckTheReposirtory()
+        [Test]
+        public void PostMateAndCheckTheRepository()
         {
             //// Arrange
             //var mate = new ObjectMothers.MateBuilder()
-            //    .withDefault().build();
+            //    .WithDefault().build();
 
             //var repoStub = NSubstitute.Substitute.For<IGenericRepository<Mate>>();
             //var controller = new BaseApiController<Mate>(repoStub);
