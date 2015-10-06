@@ -22,8 +22,8 @@ namespace HO2Server.Migrations
             //
             var mates = new List<Mate>()
             {
-                new Mate { Email =  "Cromac.Long@readify.net" , FirstName = "Cormac", LastName = "Long"},
-                new Mate { Email =  "Mohamed.Zaatar@readify.net", FirstName = "Moahmed", LastName = "Zaatar"},
+                new Mate { Email =  "Cormac.Long@readify.net" , FirstName = "Cormac", LastName = "Long"},
+                new Mate { Email =  "Mohamed.Zaatar@readify.net", FirstName = "Mohamed", LastName = "Zaatar"},
             };
             mates.ForEach(s => context.Mates.Add(s));
             context.SaveChanges();

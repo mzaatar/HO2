@@ -21,7 +21,7 @@ namespace HO2Server.DAL.Common
 
         public GenericRepository()
         {
-           Db = new HO2Context();
+           Db = new HO2Context("HO2Context.Web");
            DbSet = ((HO2Context)Db).Set<T>();
         }
 

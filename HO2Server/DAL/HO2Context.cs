@@ -3,18 +3,20 @@
 using System.Data.Entity;
 using HO2Server.Models.Business;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using HO2Server.Migrations;
 
 namespace HO2Server.DAL
 {
     public class HO2Context : DbContext , IHO2Context
     {
-
         public HO2Context() : base("HO2Context.Web")
         {
+          
         }
-
         public HO2Context(string connectionString) : base(connectionString)
         {
+            Database.SetInitializer<HO2Context>(new CreateDatabaseIfNotExists<HO2Context>());
+            Database.SetInitializer<HO2Context>(new MigrateDatabaseToLatestVersion<HO2Context, Configuration>());
         }
 
         public IDbSet<FriendGroup> Groups { get; set; }
