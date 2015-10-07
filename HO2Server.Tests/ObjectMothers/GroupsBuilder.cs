@@ -1,6 +1,7 @@
 ﻿
+using System.Data.Entity;
 using HO2.Domain.DAL;
-using HO2.Domain.Models.Business;
+using HO2.Domain.Models;
 
 
 namespace HO2Server.Tests.ObjectMothers
@@ -8,8 +9,12 @@ namespace HO2Server.Tests.ObjectMothers
     public class GroupsBuilder
     {
         private FriendGroup _group = new FriendGroup();
-        private IHO2Context db;
+        private IHO2Context _db;
 
+        public GroupsBuilder(IHO2Context db)
+        {
+            _db = db;
+        }
 
         public GroupsBuilder WithDefault()
         {
@@ -43,8 +48,10 @@ namespace HO2Server.Tests.ObjectMothers
             return this;
         }
 
-        public FriendGroup build()
+        public FriendGroup Build()
         {
+            //_db.Set<FriendGroup>().Add(_group);
+            //_db.Save();
             return _group;
         }
     }

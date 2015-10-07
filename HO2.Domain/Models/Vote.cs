@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HO2.Domain.Models;
 
-namespace HO2.Domain.Models.Business
+namespace HO2.Domain.Models
 {
     public class Vote
     {

@@ -1,6 +1,6 @@
 ﻿
 using HO2.Domain.DAL;
-using HO2.Domain.Models.Business;
+using HO2.Domain.Models;
 
 namespace HO2Server.Tests.ObjectMothers
 {
@@ -20,7 +20,7 @@ namespace HO2Server.Tests.ObjectMothers
                 .WithId(1)
                 .WithFristName("Mohamed")
                 .WithLastName("Zaatar")
-                .WithEmail("Mohamed.zaatar@gmail.com");
+                .WithEmail("Mohamed.zaatar@readify.net");
         }
 
         public MatesBuilder WithId(int id)
@@ -47,10 +47,13 @@ namespace HO2Server.Tests.ObjectMothers
             return this;
         }
 
-        public Mate build()
+        public Mate Build(bool saveIntoDb = false)
         {
-            _dbContext.Mates.Add(_mate);
-            _dbContext.SaveChanges();
+            if (saveIntoDb)
+            {
+                _dbContext.Set<Mate>().Add(_mate);
+                _dbContext.Save();
+            }
             return _mate;
         }
     }

@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using HO2.Domain.DAL;
 using HO2.Domain.DAL.Common;
-using HO2.Domain.Models.Business;
+using HO2.Domain.Models;
 using NUnit.Framework;
 using NSubstitute;
 using Shouldly;
@@ -12,140 +13,199 @@ namespace HO2Server.Tests.DAL
     [TestFixture]
     public class GenericRepositoryTest
     {
-        private HO2Context db;
+        private HO2Context _db;
+        private DbContextTransaction _transaction;
+        private IGenericRepository<Mate> _repository;
+            
         [SetUp]
-        public void Init()
+        public void SetUp()
         {
-            db = new HO2Context("HO2Context.Test");
+            _db = new HO2Context();//"HO2Context.Test");
+            _repository= new GenericRepository<Mate>(_db);
+            _transaction = _db.BeginTransaction();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _transaction.Dispose();
+            _db.Dispose();
         }
 
         [Test]
-        public void Insert_mate_then_it_should_received()
+        public void Insert_mate_then_it_should_in_db()
         {
             // Arrange
-            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
 
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
-            
-            // Act
-            repoStub.Insert(mate);
-            
-            // Assert
-            repoStub.Received().Insert(mate);
-            repoStub.ContextCount().ShouldBe(1);
-        }
-
-        [Test]
-        public void InsertMateAndRetrieveIt()
-        {
-            // Arrange
-            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
-
-            // Act
-            repoStub.Insert(mate);
+            _repository.Insert(mate);
 
             // Assert
-            repoStub.Get(s => s.MateId == mate.MateId).Returns(mate);
-            repoStub.GetById(mate.MateId).Returns(mate);
-            repoStub.GetFirst(s=>s.MateId == mate.MateId).Returns(mate);
-            repoStub.GetSingle(s => s.MateId == mate.MateId).Returns(mate);
+            _repository.ContextCount().ShouldBe(1);
+            _repository.DbSet.Count().ShouldBe(1);
+
+            _repository.DbSet.Single().FirstName.ShouldBe(mate.FirstName);
+            _repository.DbSet.Single().LastName.ShouldBe(mate.LastName);
+            _repository.DbSet.Single().Email.ShouldBe(mate.Email);
+            _repository.DbSet.Single().FriendGroups.ShouldBe(mate.FriendGroups);
         }
 
         [Test]
-        public void InsertTwoMateAndCheckIfTheyAreRecieved()
+        public void Insert_mate_then_it_should_be_retrieved()
         {
             // Arrange
-            var allMates = new List<Mate>();
-            allMates.Add(new ObjectMothers.MatesBuilder(db).WithDefault().build());
-            allMates.Add(new ObjectMothers.MatesBuilder(db)
-                .WithEmail("mzaatar@outlook.com")
-                .WithFristName("Mohamed")
-                .WithLastName("Gerg")
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
+
+            _repository.Insert(mate);
+
+            // Assert
+            _repository.ContextCount().ShouldBe(1);
+            _repository.Get(s => s.MateId == mate.MateId).FirstName.ShouldBe(mate.FirstName);
+            _repository.Get(s => s.MateId == mate.MateId).LastName.ShouldBe(mate.LastName);
+            _repository.Get(s => s.MateId == mate.MateId).Email.ShouldBe(mate.Email);
+            _repository.Get(s => s.MateId == mate.MateId).FriendGroups.ShouldBe(mate.FriendGroups);
+        }
+
+        [Test]
+        public void Insert_mate_then_it_should_be_retrieved_by_id()
+        {
+            // Arrange
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
+
+            _repository.Insert(mate);
+
+            // Assert
+            Mate returnedMate = _repository.GetById(mate.MateId);
+            returnedMate.FirstName.ShouldBe(mate.FirstName);
+            returnedMate.LastName.ShouldBe(mate.LastName);
+            returnedMate.Email.ShouldBe(mate.Email);
+            returnedMate.FriendGroups.ShouldBe(mate.FriendGroups);
+        }
+
+        [Test]
+        public void Insert_mate_then_it_should_be_retrieved_by_first()
+        {
+            // Arrange
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
+
+            _repository.Insert(mate);
+
+            // Assert
+            Mate returnedMate = _repository.GetFirst(s => s.MateId == mate.MateId);
+            returnedMate.FirstName.ShouldBe(mate.FirstName);
+            returnedMate.LastName.ShouldBe(mate.LastName);
+            returnedMate.Email.ShouldBe(mate.Email);
+            returnedMate.FriendGroups.ShouldBe(mate.FriendGroups);
+        }
+
+        [Test]
+        public void Insert_mate_then_it_should_be_retrieved_by_single()
+        {
+            // Arrange
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
+
+            _repository.Insert(mate);
+
+            // Assert
+            Mate returnedMate = _repository.GetSingle(s => s.MateId == mate.MateId);
+            returnedMate.FirstName.ShouldBe(mate.FirstName);
+            returnedMate.LastName.ShouldBe(mate.LastName);
+            returnedMate.Email.ShouldBe(mate.Email);
+            returnedMate.FriendGroups.ShouldBe(mate.FriendGroups);
+        }
+
+        [Test]
+        public void Insert_two_mate_then_retrieve_them_by_get_many()
+        {
+            // Arrange
+            Mate m1 = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
+            Mate m2 = new ObjectMothers.MatesBuilder(_db)
+                .WithEmail("Cormac.Long@readify.net")
+                .WithFristName("Cormac")
+                .WithLastName("Long")
                 .WithId(2)
-                .build());
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
+                .Build(true);
 
-            // Act
-            repoStub.InsertMany(allMates);
+            // Assert
+            var returnedMates = _repository.GetMany(s => s.Email.Contains("readify"));
+            returnedMates.Count().ShouldBe(2);
+            returnedMates.Single(s => s.Email == m2.Email).FirstName.ShouldBe(m2.FirstName);
+            returnedMates.Single(s => s.FirstName == m1.FirstName).Email.ShouldBe(m1.Email);
+        }
+
+
+        [Test]
+        public void Insert_two_mate_then_retrieve_them()
+        {
+            // Arrange
+            Mate m1 = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
+            Mate m2 = new ObjectMothers.MatesBuilder(_db)
+                .WithEmail("Cormac.Long@readify.net")
+                .WithFristName("Cormac")
+                .WithLastName("Long")
+                .WithId(2)
+                .Build(true);
+
+            // Assert
+            var returnedMates = _repository.Get();
+            returnedMates.Count().ShouldBe(2);
+            returnedMates.Single(s => s.Email == m2.Email).FirstName.ShouldBe(m2.FirstName);
+            returnedMates.Single(s => s.FirstName == m1.FirstName).Email.ShouldBe(m1.Email);
+        }
+
+        [Test]
+        public void Insert_two_mate_then_retrieve_them_by_get_many_queryable()
+        {
+            // Arrange
+            Mate m1 = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
+            Mate m2 = new ObjectMothers.MatesBuilder(_db)
+                .WithEmail("Cormac.Long@readify.net")
+                .WithFristName("Cormac")
+                .WithLastName("Long")
+                .WithId(2)
+                .Build(true);
+
+            // Assert
+            var returnedMates = _repository.GetManyQueryable(s=>s.Email.Contains("readify"));
+            returnedMates.Count().ShouldBe(2);
+            returnedMates.Single(s => s.Email == m2.Email).FirstName.ShouldBe(m2.FirstName);
+            returnedMates.Single(s => s.FirstName == m1.FirstName).Email.ShouldBe(m1.Email);
+        }
+
+        
+        [Test]
+        public void Delete_existed_mate_then_it_should_exist()
+        {
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
             
+            //arrange
+            _repository.Delete(mate);
+
             // Assert
-            repoStub.Received().InsertMany(allMates);
-            repoStub.GetMany(s => s.FirstName == allMates[0].FirstName).Returns(allMates);
-            repoStub.GetManyQueryable(s => s.FirstName == allMates[0].FirstName).Returns(allMates.AsQueryable());
-            repoStub.Get().Returns(allMates);
-            repoStub.ContextCount().Returns(2);
+            _repository.DbSet.Count().ShouldBe(0);
         }
 
+
         [Test]
-        public void DeleteExistedMateReturnTrue()
+        public void Update_existed_mate_then_changes_should_be_persisted()
         {
-            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
+            mate.LastName = "Davies";
 
             // Act
-            repoStub.DbSet.Add(mate);
+            _repository.Update(mate);
 
             // Assert
-            repoStub.Delete(mate).Returns(true);
-            repoStub.Delete(mate.MateId).Returns(true);
-            repoStub.Delete(s=>s.MateId == 1).Returns(true);
-
-        }
-
-
-        [Test]
-        public void UpdateExistedMateAndCheckChanges()
-        {
-            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
-            repoStub.DbSet.Add(mate);
-            mate.LastName = "Davids";
-
-            // Act
-            repoStub.Update(mate);
-
-            // Assert
-            repoStub.Received().Update(mate);
-
+            _repository.DbSet.Single().LastName.ShouldBe("Davies");
         }
 
         [Test]
-        public void SetDbSetWithObjectAndCheckIfExits()
+        public void Set_dbset_with_object_then_check_existence()
         {
-            var mate = new ObjectMothers.MatesBuilder(db).WithDefault().build();
-            var repoStub = Substitute.For<IGenericRepository<Mate>>();
-            repoStub.DbSet.Add(mate);
-
-            // Act
-            //repoStub.Exists(mate);
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
 
             // Assert
-            repoStub.Exists(mate).Returns(true);
-
-        }
-
-        [Test]
-        public void GetGroupWithAdminAndCheckIfItIsReceived()
-        {
-            //// Arrange
-            //var mate = new ObjectMothers.MatesBuilder()
-            //    .WithDefault()
-            //    .build();
-            //var group = new ObjectMothers.GroupsBuilder()
-            //    .WithDefault()
-            //    .WithMateAdmin(mate)
-            //    .build();
-
-            //var repoStub = Substitute.For<IGenericRepository<FriendGroup>>();
-            //repoStub.DbSet.Add(group);
-
-            //// Act
-            //var result = repoStub.GetWithInclude(s => s.FriendGroupId == group.FriendGroupId, "Mate");
-
-
-            //// Assert
-            //result.Received().FirstOrDefault().Mates;
+            _repository.Exists(mate).ShouldBe(true);
         }
     }
 }

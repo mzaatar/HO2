@@ -16,21 +16,21 @@ namespace HO2.Domain.DAL.Common
     /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        internal HO2Context Db;
+        internal IHO2Context Db;
         public IDbSet<T> DbSet { get; set; }
 
         public GenericRepository()
         {
-           Db = new HO2Context("HO2Context.Web");
-           DbSet = ((HO2Context)Db).Set<T>();
-        }
-
-        public GenericRepository(string connectionString)
-        {
-            Db = new HO2Context(connectionString);
+            Db = new HO2Context();
             DbSet = ((HO2Context)Db).Set<T>();
         }
 
+        public GenericRepository(IHO2Context context)
+        {
+           Db = context;
+           DbSet = ((HO2Context)Db).Set<T>();
+        }
+        
         public virtual IEnumerable<T> Get()
         {
             IQueryable<T> query = DbSet;
@@ -148,7 +148,7 @@ namespace HO2.Domain.DAL.Common
 
         public void Save()
         {
-            Db.SaveChanges();
+            Db.Save();
         }
 
         public void InsertMany(List<T> entitiesListToInsert)
@@ -157,7 +157,7 @@ namespace HO2.Domain.DAL.Common
             {
                 DbSet.Add(t);
             }
-            Db.SaveChanges();
+            Db.Save();
         }
 
         public int ContextCount()

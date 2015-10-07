@@ -62,10 +62,10 @@
       <DependentUpon>201509010529202_InitRelease.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="BusinessModels\FriendGroup.cs" />
-    <Compile Include="BusinessModels\Mate.cs" />
-    <Compile Include="BusinessModels\Place.cs" />
-    <Compile Include="BusinessModels\Vote.cs" />
+    <Compile Include="Models\FriendGroup.cs" />
+    <Compile Include="Models\Mate.cs" />
+    <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,7 +74,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
