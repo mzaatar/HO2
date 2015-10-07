@@ -16,11 +16,9 @@ namespace HO2.Domain.Migrations
 
         protected override void Seed(HO2Context context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
+            if (context.Database.Exists())
+                return;
+            
             var mates = new List<Mate>()
             {
                 new Mate { Email =  "Cormac.Long@readify.net" , FirstName = "Cormac", LastName = "Long"},
