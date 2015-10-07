@@ -3,11 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HO2.Domain.Models
 {
-    public class Place
+    public class Place : IModel
     {
-        [Key, Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PlaceId { get; set; }
         [Required]
         [MaxLength(100)]
         public string PlaceName { get; set; }

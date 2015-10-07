@@ -19,17 +19,10 @@ namespace HO2Server.Tests.ObjectMothers
         public GroupsBuilder WithDefault()
         {
             return this
-                .WithId(1)
                 .WithName("Default Group")
                 .WithDetails("Default Details");
         }
-
-        public GroupsBuilder WithId(int id)
-        {
-            _group.FriendGroupId = id;
-            return this;
-        }
-
+        
         public GroupsBuilder WithName(string name)
         {
             _group.FriendGroupName = name;

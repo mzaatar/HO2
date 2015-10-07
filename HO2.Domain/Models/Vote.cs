@@ -5,12 +5,8 @@ using HO2.Domain.Models;
 
 namespace HO2.Domain.Models
 {
-    public class Vote
+    public class Vote : IModel
     {
-        [Key, Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int VoteId { get; set; }
-
         [Required]
         public DateTime UpdateDateTime { get; set; }
 

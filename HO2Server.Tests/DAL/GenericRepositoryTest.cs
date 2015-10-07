@@ -60,10 +60,10 @@ namespace HO2Server.Tests.DAL
 
             // Assert
             _repository.ContextCount().ShouldBe(1);
-            _repository.Get(s => s.MateId == mate.MateId).FirstName.ShouldBe(mate.FirstName);
-            _repository.Get(s => s.MateId == mate.MateId).LastName.ShouldBe(mate.LastName);
-            _repository.Get(s => s.MateId == mate.MateId).Email.ShouldBe(mate.Email);
-            _repository.Get(s => s.MateId == mate.MateId).FriendGroups.ShouldBe(mate.FriendGroups);
+            _repository.Get(s => s.Id == mate.Id).FirstName.ShouldBe(mate.FirstName);
+            _repository.Get(s => s.Id == mate.Id).LastName.ShouldBe(mate.LastName);
+            _repository.Get(s => s.Id == mate.Id).Email.ShouldBe(mate.Email);
+            _repository.Get(s => s.Id == mate.Id).FriendGroups.ShouldBe(mate.FriendGroups);
         }
 
         [Test]
@@ -75,7 +75,7 @@ namespace HO2Server.Tests.DAL
             _repository.Insert(mate);
 
             // Assert
-            Mate returnedMate = _repository.GetById(mate.MateId);
+            Mate returnedMate = _repository.GetById(mate.Id);
             returnedMate.FirstName.ShouldBe(mate.FirstName);
             returnedMate.LastName.ShouldBe(mate.LastName);
             returnedMate.Email.ShouldBe(mate.Email);
@@ -91,7 +91,7 @@ namespace HO2Server.Tests.DAL
             _repository.Insert(mate);
 
             // Assert
-            Mate returnedMate = _repository.GetFirst(s => s.MateId == mate.MateId);
+            Mate returnedMate = _repository.GetFirst(s => s.Id == mate.Id);
             returnedMate.FirstName.ShouldBe(mate.FirstName);
             returnedMate.LastName.ShouldBe(mate.LastName);
             returnedMate.Email.ShouldBe(mate.Email);
@@ -107,7 +107,7 @@ namespace HO2Server.Tests.DAL
             _repository.Insert(mate);
 
             // Assert
-            Mate returnedMate = _repository.GetSingle(s => s.MateId == mate.MateId);
+            Mate returnedMate = _repository.GetSingle(s => s.Id == mate.Id);
             returnedMate.FirstName.ShouldBe(mate.FirstName);
             returnedMate.LastName.ShouldBe(mate.LastName);
             returnedMate.Email.ShouldBe(mate.Email);
@@ -123,7 +123,6 @@ namespace HO2Server.Tests.DAL
                 .WithEmail("Cormac.Long@readify.net")
                 .WithFristName("Cormac")
                 .WithLastName("Long")
-                .WithId(2)
                 .Build(true);
 
             // Assert
@@ -143,7 +142,6 @@ namespace HO2Server.Tests.DAL
                 .WithEmail("Cormac.Long@readify.net")
                 .WithFristName("Cormac")
                 .WithLastName("Long")
-                .WithId(2)
                 .Build(true);
 
             // Assert
@@ -162,7 +160,6 @@ namespace HO2Server.Tests.DAL
                 .WithEmail("Cormac.Long@readify.net")
                 .WithFristName("Cormac")
                 .WithLastName("Long")
-                .WithId(2)
                 .Build(true);
 
             // Assert
@@ -202,10 +199,10 @@ namespace HO2Server.Tests.DAL
         [Test]
         public void Set_dbset_with_object_then_check_existence()
         {
-            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build();
+            var mate = new ObjectMothers.MatesBuilder(_db).WithDefault().Build(true);
 
             // Assert
-            _repository.Exists(mate).ShouldBe(true);
+            _repository.Exists(mate.Id).ShouldBe(true);
         }
     }
 }

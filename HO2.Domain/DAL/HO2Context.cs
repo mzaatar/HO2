@@ -27,16 +27,16 @@ namespace HO2.Domain.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             
             var mate = modelBuilder.Entity<Mate>();
-            mate.HasKey(x => x.MateId);
+            mate.HasKey(x => x.Id);
 
             var vote = modelBuilder.Entity<Vote>();
-            vote.HasKey(x => x.VoteId);
+            vote.HasKey(x => x.Id);
 
             var place = modelBuilder.Entity<Place>();
-            place.HasKey(x => x.PlaceId);
+            place.HasKey(x => x.Id);
 
             var friendgroup = modelBuilder.Entity<FriendGroup>();
-            friendgroup.HasKey(x => x.FriendGroupId);
+            friendgroup.HasKey(x => x.Id);
 
             friendgroup.
                 HasMany(c => c.Mates).
@@ -44,9 +44,9 @@ namespace HO2.Domain.DAL
                 Map(
                     m =>
                     {
-                        m.MapLeftKey("FriendGroupId");
-                        m.MapRightKey("UserId");
-                        m.ToTable("UserFriendGroup");
+                        m.MapLeftKey("FriendGroup.Id");
+                        m.MapRightKey("Mate.Id");
+                        m.ToTable("MateFriendGroup");
                     });
         }
 

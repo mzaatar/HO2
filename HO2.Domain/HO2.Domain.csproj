@@ -57,24 +57,25 @@
     <Compile Include="DAL\Common\IGenericRepository.cs" />
     <Compile Include="DAL\HO2Context.cs" />
     <Compile Include="DAL\IHO2Context.cs" />
-    <Compile Include="Migrations\201509010529202_InitRelease.cs" />
-    <Compile Include="Migrations\201509010529202_InitRelease.Designer.cs">
-      <DependentUpon>201509010529202_InitRelease.cs</DependentUpon>
+    <Compile Include="Migrations\201510070726187_InitModel.cs" />
+    <Compile Include="Migrations\201510070726187_InitModel.Designer.cs">
+      <DependentUpon>201510070726187_InitModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\FriendGroup.cs" />
+    <Compile Include="Models\IModel.cs" />
     <Compile Include="Models\Mate.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509010529202_InitRelease.resx">
-      <DependentUpon>201509010529202_InitRelease.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="Migrations\201510070726187_InitModel.resx">
+      <DependentUpon>201510070726187_InitModel.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

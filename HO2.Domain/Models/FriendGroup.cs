@@ -5,17 +5,12 @@ using Newtonsoft.Json;
 
 namespace HO2.Domain.Models
 {
-    public class FriendGroup
+    public class FriendGroup :IModel
     {
         public FriendGroup()
         {
             this.Mates = new List<Mate>();
         }
-
-        [Key, Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int FriendGroupId { get; set; }
-
 
         [Required]
         [MaxLength(100)]

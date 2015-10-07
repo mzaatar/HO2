@@ -17,16 +17,9 @@ namespace HO2Server.Tests.ObjectMothers
         public MatesBuilder WithDefault()
         {
             return this
-                .WithId(1)
                 .WithFristName("Mohamed")
                 .WithLastName("Zaatar")
                 .WithEmail("Mohamed.zaatar@readify.net");
-        }
-
-        public MatesBuilder WithId(int id)
-        {
-            this._mate.MateId = id;
-            return this;
         }
 
         public MatesBuilder WithEmail(string email)

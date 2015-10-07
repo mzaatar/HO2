@@ -38,15 +38,15 @@ namespace HO2.Domain.DAL.Common
 
         void Update(T entityToUpdate);
 
-        bool Delete(object id);
+        T Delete(object id);
 
-        bool Delete(T entityToDelete);
+        T Delete(T entityToDelete);
 
         bool Delete(Func<T, Boolean> where);
 
         void Save();
 
-        bool Exists(T entity);
+        bool Exists(object primaryKey);
 
     }
 }

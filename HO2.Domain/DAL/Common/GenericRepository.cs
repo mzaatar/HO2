@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 
 namespace HO2.Domain.DAL.Common
 {
@@ -16,7 +17,7 @@ namespace HO2.Domain.DAL.Common
     /// <typeparam name="T"></typeparam>
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        internal IHO2Context Db;
+        internal HO2Context Db;
         public IDbSet<T> DbSet { get; set; }
 
         public GenericRepository()
@@ -25,7 +26,7 @@ namespace HO2.Domain.DAL.Common
             DbSet = ((HO2Context)Db).Set<T>();
         }
 
-        public GenericRepository(IHO2Context context)
+        public GenericRepository(HO2Context context)
         {
            Db = context;
            DbSet = ((HO2Context)Db).Set<T>();
@@ -50,37 +51,27 @@ namespace HO2.Domain.DAL.Common
             this.Save();
         }
 
-        public virtual bool Delete(object id)
+        public virtual T Delete(object id)
         {
-            try
-            {
-                T entityToDelete = DbSet.Find(id);
-                Delete(entityToDelete);
-                this.Save();
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            
+            T entityToDelete = DbSet.Find(id);
+            return Delete(entityToDelete);
         }
 
-        public virtual bool Delete(T entityToDelete)
+        public virtual T Delete(T entityToDelete)
         {
-            if (Exists(entityToDelete))
+            if (Db.Entry(entityToDelete).State == EntityState.Detached)
             {
-                DbSet.Remove(entityToDelete);
-                this.Save();
-                return true;
+                DbSet.Attach(entityToDelete);
             }
-            return false;
+            var item = DbSet.Remove(entityToDelete);
+            this.Save();
+            return item;
         }
 
         public virtual void Update(T entityToUpdate)
         {
-            DbSet.Add(entityToUpdate);
-            Save();
+            DbSet.Attach(entityToUpdate);
+            Db.Entry(entityToUpdate).State = EntityState.Modified;
         }
 
       
@@ -128,12 +119,11 @@ namespace HO2.Domain.DAL.Common
         }
 
      
-        public bool Exists(T entity)
+        public bool Exists(object primaryKey)
         {
-            return DbSet.Contains(entity);
+            return DbSet.Find(primaryKey) != null;
         }
-
-      
+        
         public T GetSingle(Func<T, bool> predicate)
         {
             return DbSet.Single<T>(predicate);

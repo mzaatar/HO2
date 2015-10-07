@@ -5,17 +5,13 @@ using Newtonsoft.Json;
 
 namespace HO2.Domain.Models
 {
-    public class Mate
+    public class Mate : IModel
     {
         public Mate()
         {
             this.FriendGroups = new List<FriendGroup>();
         }
-        [Key, Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-
-        public int MateId { get; set; }
-
+       
         [Required]
         [MaxLength(100)]
         [Index("IX_UniqueEmail", IsUnique = true)]
