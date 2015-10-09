@@ -1,4 +1,4 @@
-namespace HO2Server.Areas.HelpPage.ModelDescriptions
+namespace HO2.Server.Areas.HelpPage.ModelDescriptions
 {
     public class CollectionModelDescription : ModelDescription
     {

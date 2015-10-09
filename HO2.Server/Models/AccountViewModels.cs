@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HO2Server.Models
+namespace HO2.Server.Models
 {
     // Models returned by AccountController actions.
 

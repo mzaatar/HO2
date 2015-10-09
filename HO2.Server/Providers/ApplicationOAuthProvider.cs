@@ -6,9 +6,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using HO2Server.Models;
+using HO2.Server.Models;
 
-namespace HO2Server.Providers
+namespace HO2.Server.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

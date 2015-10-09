@@ -9,7 +9,7 @@ using System.Web.Http;
 using System.Web.Http.OData;
 #endif
 
-namespace HO2Server.Areas.HelpPage
+namespace HO2.Server.Areas.HelpPage
 {
     /// <summary>
     /// Use this class to customize the Help Page.
@@ -19,7 +19,7 @@ namespace HO2Server.Areas.HelpPage
     public static class HelpPageConfig
     {
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters",
-            MessageId = "HO2Server.Areas.HelpPage.TextSample.#ctor(System.String)",
+            MessageId = "HO2.Server.Areas.HelpPage.TextSample.#ctor(System.String)",
             Justification = "End users may choose to merge this string with existing localized resources.")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
             MessageId = "bsonspec",

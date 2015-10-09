@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using HO2.Domain.DAL;
 using HO2.Domain.DAL.Common;
 using HO2.Domain.Models;
 using NUnit.Framework;
-using NSubstitute;
 using Shouldly;
 
-namespace HO2Server.Tests.DAL
+namespace HO2.Server.Tests.DAL
 {
     [TestFixture]
     public class GenericRepositoryTest

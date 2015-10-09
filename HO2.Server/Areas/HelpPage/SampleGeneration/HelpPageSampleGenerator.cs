@@ -13,7 +13,7 @@ using System.Web.Http.Description;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 
-namespace HO2Server.Areas.HelpPage
+namespace HO2.Server.Areas.HelpPage
 {
     /// <summary>
     /// This class will generate the samples for the help page.

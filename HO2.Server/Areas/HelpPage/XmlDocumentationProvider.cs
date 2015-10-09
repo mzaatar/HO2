@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using HO2Server.Areas.HelpPage.ModelDescriptions;
+using HO2.Server.Areas.HelpPage.ModelDescriptions;
 
-namespace HO2Server.Areas.HelpPage
+namespace HO2.Server.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

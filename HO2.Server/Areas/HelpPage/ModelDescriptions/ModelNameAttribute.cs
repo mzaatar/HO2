@@ -1,6 +1,6 @@
 using System;
 
-namespace HO2Server.Areas.HelpPage.ModelDescriptions
+namespace HO2.Server.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Use this attribute to change the name of the <see cref="ModelDescription"/> generated for a type.

@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace HO2Server.Areas.HelpPage.ModelDescriptions
+namespace HO2.Server.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

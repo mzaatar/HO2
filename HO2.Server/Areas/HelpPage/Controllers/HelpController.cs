@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using HO2Server.Areas.HelpPage.ModelDescriptions;
-using HO2Server.Areas.HelpPage.Models;
+using HO2.Server.Areas.HelpPage.ModelDescriptions;
+using HO2.Server.Areas.HelpPage.Models;
 
-namespace HO2Server.Areas.HelpPage.Controllers
+namespace HO2.Server.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

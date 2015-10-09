@@ -1,6 +1,6 @@
 ﻿using System.Web.Optimization;
 
-namespace HO2Server
+namespace HO2.Server
 {
     public class BundleConfig
     {

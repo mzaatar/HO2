@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace HO2Server.Models
+namespace HO2.Server.Models
 {
     // Models used as parameters to AccountController actions.
 

@@ -4,10 +4,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using HO2Server.Providers;
-using HO2Server.Models;
+using HO2.Server.Providers;
+using HO2.Server.Models;
 
-namespace HO2Server
+namespace HO2.Server
 {
     public partial class Startup
     {

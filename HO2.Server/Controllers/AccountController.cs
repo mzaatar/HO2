@@ -12,11 +12,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using HO2Server.Models;
-using HO2Server.Providers;
-using HO2Server.Results;
+using HO2.Server.Models;
+using HO2.Server.Providers;
+using HO2.Server.Results;
 
-namespace HO2Server.Controllers
+namespace HO2.Server.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
