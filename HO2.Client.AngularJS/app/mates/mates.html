@@ -33,7 +33,7 @@
         <input type="search" required ng-model="id" placeholder="Please enter id" />
         <input type="submit" value="Search by Id"/>
 
-        <div ng-show="vm.mate">
+        <div ng-show="vm.mate && !showDetails">
             <ul >
                 <li><strong>ID:</strong>{{vm.mate.Id}}</li>
                 <li><strong>Email:</strong>{{vm.mate.Email}}</li>
@@ -46,15 +46,18 @@
     <br/>
 
     <div ng-show="vm.mate">
-        <form name="UpdateMate" ng-submit="vm.updateMate(vm.mate)" style="background-color: greenyellow;">
-            <input type="text" disabled  ng-model="vm.mate.Id" />
-            <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email" />
-            <input type="text" placeholder="First Name" ng-model="vm.mate.FirstName" />
-            <input type="text" placeholder="Last Name" ng-model="vm.mate.LastName" />
-            <input type="submit" value="Update" />
-        </form>
+        <h4><a href="#" ng-click="showDetails = ! showDetails">Edit</a></h4>
+        <div ng-show="showDetails">
+            <p>Number of patient discharges: {{procedure.discharged}}</p>
+            <form name="UpdateMate" ng-submit="vm.updateMate(vm.mate)" style="background-color: greenyellow;">
+                <input type="text" disabled ng-model="vm.mate.Id" />
+                <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email" />
+                <input type="text" placeholder="First Name" ng-model="vm.mate.FirstName" />
+                <input type="text" placeholder="Last Name" ng-model="vm.mate.LastName" />
+                <input type="submit" value="Update" ng-click="showDetails = ! showDetails"/>
+            </form>
+        </div>
     </div>
-
     <br />
 
     <form name="addNewMate" ng-submit="vm.addMate(newmate)" style="background-color: rosybrown;">
