@@ -5,47 +5,64 @@
     <div>{{vm.error}}</div>
 
     <form name="getAll" ng-submit="vm.getAllMates()" style="background-color: orange;">
-        <input type="submit" value="Get All Mates"/>
+        <input type="submit" value="Get All Mates" />
 
         <table style="border: 1px solid red;" ng-show="vm.mateList">
             <thead>
-            <tr>
-                <td>Id</td>
-                <td>Username</td>
-                <td>First Name</td>
-                <td>Last Name</td>
-            </tr>
+                <tr>
+                    <td>Id</td>
+                    <td>Username</td>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="m in vm.mateList">
-                <td>{{m.Id}}</td>
-                <td>{{m.Email}}</td>
-                <td>{{m.FirstName}}</td>
-                <td>{{m.LastName}}</td>
-            </tr>
+                <tr ng-repeat="m in vm.mateList">
+                    <td>{{m.Id}}</td>
+                    <td>{{m.Email}}</td>
+                    <td>{{m.FirstName}}</td>
+                    <td>{{m.LastName}}</td>
+                </tr>
             </tbody>
         </table>
     </form>
 
+    <br/>
 
     <form name="searchUser" ng-submit="vm.search(id)" style="background-color: green;">
-        <input type="search" required ng-model="id" placeholder="Please enter id"/>
-        <input type="submit" value="Search"/>
+        <input type="search" required ng-model="id" placeholder="Please enter id" />
+        <input type="submit" value="Search by Id"/>
 
         <div ng-show="vm.mate">
-            <h1>Username : {{vm.mate.Email}}</h1>
-            <h1>First Name : {{vm.mate.FirstName}}</h1>
-            <h1>Last Name : {{vm.mate.LastName}}</h1>
+            <ul >
+                <li><strong>ID:</strong>{{vm.mate.Id}}</li>
+                <li><strong>Email:</strong>{{vm.mate.Email}}</li>
+                <li><strong>FirstName:</strong>{{vm.mate.FirstName}}</li>
+                <li><strong>LastName:</strong>{{vm.mate.LastName}}</li>
+            </ul> 
         </div>
     </form>
 
+    <br/>
+
+    <div ng-show="vm.mate">
+        <form name="UpdateMate" ng-submit="vm.updateMate(vm.mate)" style="background-color: greenyellow;">
+            <input type="text" disabled  ng-model="vm.mate.Id" />
+            <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email" />
+            <input type="text" placeholder="First Name" ng-model="vm.mate.FirstName" />
+            <input type="text" placeholder="Last Name" ng-model="vm.mate.LastName" />
+            <input type="submit" value="Update" />
+        </form>
+    </div>
+
+    <br />
 
     <form name="addNewMate" ng-submit="vm.addMate(newmate)" style="background-color: rosybrown;">
-        <input type="email" required placeholder="Email Addess as Username" ng-model="newmate.email"/>
+        <input type="email" required placeholder="Email Addess as Username" ng-model="newmate.email" />
         <input type="text" required placeholder="First Name" ng-model="newmate.firstname" />
         <input type="text" required placeholder="Last Name" ng-model="newmate.lastname" />
 
-         <input type="submit" value="Add" />
+        <input type="submit" value="Add" />
 
     </form>
 
