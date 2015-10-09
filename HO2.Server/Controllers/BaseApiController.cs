@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web.Http;
 using HO2.Domain.DAL.Common;
+using HO2.Domain.Models;
 
 namespace HO2.Server.Controllers
 {
@@ -15,7 +17,7 @@ namespace HO2.Server.Controllers
         public BaseApiController(IGenericRepository<T> repo)
         {
             //TODO: USE DEPENDENCY INJECTION FOR DECOUPLING
-            this.DataStore = repo; //new GenericRepository<T>();
+            DataStore = repo;
         }
 
         // GET api/<controller>
@@ -35,7 +37,7 @@ namespace HO2.Server.Controllers
         {
             try
             {
-                DataStore.Update(value);
+                DataStore.Insert(value);
             }
             catch (OptimisticConcurrencyException ex)
             {
@@ -46,7 +48,14 @@ namespace HO2.Server.Controllers
         // PUT api/<controller>
         public virtual void Put([FromBody] T value)
         {
-            DataStore.Insert(value);
+            try
+            {
+                DataStore.Update(value);
+            }
+            catch (OptimisticConcurrencyException ex)
+            {
+                throw ex;
+            }
         }
 
         // DELETE api/<controller>/5
