@@ -11,8 +11,8 @@
     <ProjectGuid>{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HO2Server.Tests</RootNamespace>
-    <AssemblyName>HO2Server.Tests</AssemblyName>
+    <RootNamespace>HO2.Server.Tests</RootNamespace>
+    <AssemblyName>HO2.Server.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -133,7 +133,7 @@
       <Project>{fdb785be-2cdf-4375-b28c-844c0fca4437}</Project>
       <Name>HO2.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HO2Server\HO2Server.csproj">
+    <ProjectReference Include="..\HO2.Server\HO2.Server.csproj">
       <Project>{AB668F9C-C654-4A27-AA71-5094A8DEA27B}</Project>
       <Name>HO2Server</Name>
     </ProjectReference>

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2Server", "HO2Server\HO2Server.csproj", "{AB668F9C-C654-4A27-AA71-5094A8DEA27B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2.Server", "HO2.Server\HO2.Server.csproj", "{AB668F9C-C654-4A27-AA71-5094A8DEA27B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2Server.Tests", "HO2Server.Tests\HO2Server.Tests.csproj", "{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2.Server.Tests", "HO2.Server.Tests\HO2.Server.Tests.csproj", "{40E00FA6-D2E3-4A4D-8EA5-C9CF341B35B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAngularJS", "ClientAngularJS\ClientAngularJS.csproj", "{35BAE225-A3FF-4CD0-868F-31643F96A144}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2.Client.AngularJS", "HO2.Client.AngularJS\HO2.Client.AngularJS.csproj", "{35BAE225-A3FF-4CD0-868F-31643F96A144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAngularJS.Tests", "ClientAngularJS.Tests\ClientAngularJS.Tests.csproj", "{00BCD205-4F0E-4BEB-834B-FF62A416179D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2.Client.AngularJS.Tests", "HO2.Client.AngularJS.Tests\HO2.Client.AngularJS.Tests.csproj", "{00BCD205-4F0E-4BEB-834B-FF62A416179D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HO2.Domain", "HO2.Domain\HO2.Domain.csproj", "{FDB785BE-2CDF-4375-B28C-844C0FCA4437}"
 EndProject
