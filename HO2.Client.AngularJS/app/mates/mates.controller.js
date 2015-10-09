@@ -26,6 +26,7 @@
 
         var onError = function (reason) {
             vm.error = reason;
+            console.log("reason : " + reason);
         };
 
         vm.search = function(id) {

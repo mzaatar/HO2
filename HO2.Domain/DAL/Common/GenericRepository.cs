@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Runtime.Remoting.Contexts;
 
 namespace HO2.Domain.DAL.Common
@@ -23,7 +24,7 @@ namespace HO2.Domain.DAL.Common
         public GenericRepository()
         {
             Db = new HO2Context();
-            DbSet = ((HO2Context)Db).Set<T>();
+            DbSet = Db.Set<T>();
         }
 
         public GenericRepository(HO2Context context)
@@ -44,11 +45,10 @@ namespace HO2.Domain.DAL.Common
             return DbSet.Find(id);
         }
 
-      
         public virtual void Insert(T entityToInsert)
         {
             DbSet.Add(entityToInsert);
-            this.Save();
+            Save();
         }
 
         public virtual T Delete(object id)
@@ -64,7 +64,7 @@ namespace HO2.Domain.DAL.Common
                 DbSet.Attach(entityToDelete);
             }
             var item = DbSet.Remove(entityToDelete);
-            this.Save();
+            Save();
             return item;
         }
 
@@ -72,6 +72,7 @@ namespace HO2.Domain.DAL.Common
         {
             DbSet.Attach(entityToUpdate);
             Db.Entry(entityToUpdate).State = EntityState.Modified;
+            Save();
         }
 
       
@@ -113,7 +114,7 @@ namespace HO2.Domain.DAL.Common
             System.Linq.Expressions.Expression<Func<T,
                 bool>> predicate, params string[] include)
         {
-            IQueryable<T> query = this.DbSet;
+            IQueryable<T> query = DbSet;
             query = include.Aggregate(query, (current, inc) => current.Include(inc));
             return query.Where(predicate);
         }

@@ -1,11 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using HO2.Domain.Migrations;
 using System.Data.Common;
-using System;
 using System.Data;
-using System.Runtime.Remoting.Contexts;
-using System.Threading;
 using System.Threading.Tasks;
 using HO2.Domain.Models;
 
@@ -66,23 +64,6 @@ namespace HO2.Domain.DAL
             await SaveChangesAsync();
         }
 
-        //public override int SaveChanges()
-        //{
-        //    return base.SaveChanges();
-        //}
-
-        //public override Task<int> SaveChangesAsync()
-        //{
-        //    return base.SaveChangesAsync();
-        //}
-
-        //public override Task<int> SaveChangesAsync(CancellationToken cancellationToken)
-        //{
-          
-        //    return base.SaveChangesAsync(cancellationToken);
-        //}
-
-
         public DbContextTransaction BeginTransaction()
         {
             return Database.BeginTransaction();
@@ -92,38 +73,5 @@ namespace HO2.Domain.DAL
         {
             return Database.BeginTransaction(isolationLevel);
         }
-
-        //public HO2Context() : base("HO2Context.Web")
-        //{
-
-        //}
-        //public HO2Context(string connectionString) : base(connectionString)
-        //{
-        //    Database.SetInitializer<HO2Context>(new CreateDatabaseIfNotExists<HO2Context>());
-        //    Database.SetInitializer<HO2Context>(new MigrateDatabaseToLatestVersion<HO2Context, Configuration>());
-        //}
-
-        //public IDbSet<FriendGroup> Groups { get; set; }
-        //public IDbSet<Mate> Mates { get; set; }
-        //public IDbSet<Vote> Votes { get; set; }
-        //public IDbSet<Place> Places { get; set; }
-
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-
-        //    modelBuilder.Entity<FriendGroup>().
-        //        HasMany(c => c.Mates).
-        //        WithMany(p => p.FriendGroups).
-        //        Map(
-        //            m =>
-        //            {
-        //                m.MapLeftKey("FriendGroupId");
-        //                m.MapRightKey("UserId");
-        //                m.ToTable("UserFriendGroup");
-        //            });
-
-        //}
     }
 }
