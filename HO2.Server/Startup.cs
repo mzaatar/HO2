@@ -1,9 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(HO2Server.Startup))]
+[assembly: OwinStartup(typeof(HO2.Server.Startup))]
 
-namespace HO2Server
+namespace HO2.Server
 {
     public partial class Startup
     {

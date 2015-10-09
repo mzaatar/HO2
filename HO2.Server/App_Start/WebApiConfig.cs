@@ -2,7 +2,7 @@
 using System.Web.Http.Cors;
 using Microsoft.Owin.Security.OAuth;
 
-namespace HO2Server
+namespace HO2.Server
 {
     public static class WebApiConfig
     {

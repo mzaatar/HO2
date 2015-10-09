@@ -4,7 +4,7 @@ using HO2.Domain.DAL;
 using HO2.Domain.Models;
 
 
-namespace HO2Server.Tests.ObjectMothers
+namespace HO2.Server.Tests.ObjectMothers
 {
     public class GroupsBuilder
     {

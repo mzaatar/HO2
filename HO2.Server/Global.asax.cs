@@ -4,7 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using HO2.Domain.DAL;
 
-namespace HO2Server
+namespace HO2.Server
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

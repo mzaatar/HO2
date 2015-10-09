@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web.Http;
 using HO2.Domain.DAL.Common;
 
-namespace HO2Server.Controllers
+namespace HO2.Server.Controllers
 {
     public class BaseApiController<T> : ApiController where T : class
     {

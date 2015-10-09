@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using HO2Server.Controllers;
+using HO2.Server.Controllers;
 using NUnit.Framework;
 
-namespace HO2Server.Tests.Controllers
+namespace HO2.Server.Tests.Controllers
 {
     [TestFixture]
     public class HomeControllerTest
