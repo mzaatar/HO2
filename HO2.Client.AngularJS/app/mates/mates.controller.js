@@ -1,10 +1,11 @@
 ﻿(function() {
     'use strict';
 
-    angular
-        .module('app')
-        .controller('MatesController', MatesController, ['dataservice', '$scope', '$http']);
+        angular
+            .module('app')
+            .controller('MatesController', MatesController);
 
+    /* @ngInject */
 
     function MatesController($scope, $q, dataservice)
     {

@@ -4,7 +4,7 @@
 
     angular
         .module('app')
-        .factory('dataservice', dataservice, ['$http']);
+        .factory('dataservice', dataservice);
 
     /* @ngInject */
 
@@ -15,7 +15,6 @@
         function functionFailed(error) {
             console.log('XHR Failed. Error is :' + error);
         }
-
 
         function getMateById(id) {
             function getMateByIdComplete(response) {
