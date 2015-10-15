@@ -1,28 +1,49 @@
-﻿(function () {
+﻿// dataservice factory
 
-    var httpservices = function ($http) {
 
-        var getMateDetails = function (id) {
-            return $http.get("http://localhost:49588/api/mates/" + id)
-                .then(function(response) {
-                    return reponse.data;
-                });
-        };
+angular
+    .module('app')
+    .factory('dataservice', dataservice, ['$http']);
 
-        var getMates = function() {
-            return $http.get("http://localhost:49588/api/mates")
-                .then(function(response) {
-                    return response.data;
-                });
-        };
+//dataservice.$inject = ['$http'];
 
-        return {
-            getMateDetails: getMateDetails,
-            getMates: getMates
-       };
+function dataservice($http) {
+
+    var baseUrl = 'http://localhost:49588/api/mates';
+
+ 
+    function getMateById(id) {
+        return $http.get(baseUrl + "/" + id);
     };
 
-    var module = angular.module("app");
-    module.factory("httpservices", httpservices);
+    function getAllMates() {
+        return $http.get(baseUrl)
+            .then(function(response) {
+                return response.data;
+            })
+            .catch(function(error) {
+                return error;
+            });
+    }
 
-})();
+    function addMateWithDetails(newmate) {
+        $http.post(baseUrl + "/", newmate)
+            .then(function(response) {
+                return response;
+            });
+    }
+
+    function updateMateWithDetails(mate) {
+        $http.put(baseUrl + "/", mate)
+            .then(function(response) {
+                return response;
+            });
+    }
+
+    return {
+        getMateById: getMateById,
+        getAllMates: getAllMates,
+        addMateWithDetails: addMateWithDetails,
+        updateMateWithDetails: updateMateWithDetails
+    };
+}

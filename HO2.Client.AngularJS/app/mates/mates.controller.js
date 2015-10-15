@@ -3,18 +3,13 @@
 
     angular
         .module('app')
-        .controller('MatesController', MatesController, ['$scope','$http']);
+        .controller('MatesController', MatesController, ['dataservice', '$scope', '$http']);
 
-    //Mates.$inject = ['$q', 'dataservice', 'logger'];
 
-    function MatesController($scope, $http) //($q, dataservice, logger)
+    function MatesController($scope, $q, dataservice)
     {
         console.log("I'm in MatesController");
         var vm = this;
-
-        var onSearchComplete = function (response) {
-            vm.mate = response.data;
-        };
 
         var onGetAllComplete = function (response) {
             vm.mateList = response.data;
@@ -33,10 +28,17 @@
             console.log("reason : " + reason);
         };
 
-        vm.search = function(id) {
+
+        vm.search = function (id) {
             console.log("searching for " + id);
-            $http.get("http://localhost:49588/api/mates/" + id)
-                .then(onSearchComplete, onError);
+
+            dataservice.getMateById(id)
+             .success(function (data) {
+                vm.mate = data;
+            })
+            .error(function (error) {
+                console.log('Unable to load customer data: ' + error.message);
+          });
         };
 
 
