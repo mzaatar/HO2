@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('app.core')
         .factory('dataservice', dataservice);
 
     /* @ngInject */

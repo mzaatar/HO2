@@ -48,7 +48,6 @@
     <div ng-show="vm.mate">
         <h4><a href="#" ng-click="showDetails = ! showDetails">Edit</a></h4>
         <div ng-show="showDetails">
-            <p>Number of patient discharges: {{procedure.discharged}}</p>
             <form name="UpdateMate" ng-submit="vm.updateMate(vm.mate)" style="background-color: greenyellow;">
                 <input type="text" disabled ng-model="vm.mate.Id"/>
                 <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email"/>

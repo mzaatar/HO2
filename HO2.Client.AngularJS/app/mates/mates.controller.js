@@ -2,7 +2,7 @@
     'use strict';
 
         angular
-            .module('app')
+            .module('app.mates')
             .controller('MatesController', MatesController);
 
     /* @ngInject */
@@ -11,20 +11,6 @@
     {
         console.log("I'm in MatesController");
         var vm = this;
-
-        var onAdded = function (response) {
-            console.log("Addedd successfully");
-        };
-
-        var onUpdated = function (response) {
-            console.log("Updated successfully");
-        };
-
-        var onError = function (reason) {
-            vm.error = reason;
-            console.log("reason : " + reason);
-        };
-
 
         vm.search = function (id) {
             return dataservice.getMateById(id)
@@ -53,7 +39,5 @@
         vm.delete = function(id) {
             return dataservice.deleteMateById(id);
         };
-
     };
-}
-)();
+})();
