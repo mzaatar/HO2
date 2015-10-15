@@ -50,13 +50,14 @@
         <div ng-show="showDetails">
             <p>Number of patient discharges: {{procedure.discharged}}</p>
             <form name="UpdateMate" ng-submit="vm.updateMate(vm.mate)" style="background-color: greenyellow;">
-                <input type="text" disabled ng-model="vm.mate.Id" />
-                <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email" />
-                <input type="text" placeholder="First Name" ng-model="vm.mate.FirstName" />
-                <input type="text" placeholder="Last Name" ng-model="vm.mate.LastName" />
+                <input type="text" disabled ng-model="vm.mate.Id"/>
+                <input type="email" placeholder="Email Addess as Username" ng-model="vm.mate.Email"/>
+                <input type="text" placeholder="First Name" ng-model="vm.mate.FirstName"/>
+                <input type="text" placeholder="Last Name" ng-model="vm.mate.LastName"/>
                 <input type="submit" value="Update" ng-click="showDetails = ! showDetails"/>
             </form>
         </div>
+        <input type="submit" value="delete"  ng-click="vm.delete(id)" />
     </div>
     <br />
 

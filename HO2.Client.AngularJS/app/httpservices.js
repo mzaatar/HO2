@@ -64,11 +64,24 @@
                 .catch(functionFailed);
         }
 
+
+        function deleteMateById(id) {
+            function deleteMateByIdComplete(response) {
+                console.log("Mate with : " + id + ' deleted !');
+                return response.data;
+            }
+
+            return $http.delete(baseUrl + "/" + id)
+                .then(deleteMateByIdComplete)
+                .catch(functionFailed);
+        }
+
         var service = {
             getMateById: getMateById,
             getAllMates: getAllMates,
             addMateWithDetails: addMateWithDetails,
-            updateMateWithDetails: updateMateWithDetails
+            updateMateWithDetails: updateMateWithDetails,
+            deleteMateById: deleteMateById
         };
 
         return service;

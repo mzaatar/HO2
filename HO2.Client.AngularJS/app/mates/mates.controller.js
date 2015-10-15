@@ -49,6 +49,10 @@
             return dataservice.updateMateWithDetails(mate);
         };
 
+        vm.delete = function(id) {
+            return dataservice.deleteMateById(id);
+        };
+
     };
 }
 )();
