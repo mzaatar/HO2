@@ -99,7 +99,7 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="test\index.html" />
-    <Content Include="test\spec\dataservice.spec.js" />
+    <Content Include="test\lib\mockData.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +110,7 @@
     <Folder Include="app\groups\" />
     <Folder Include="app\votes\" />
     <Folder Include="contents\" />
+    <Folder Include="test\specs\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
