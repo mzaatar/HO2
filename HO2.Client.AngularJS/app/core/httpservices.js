@@ -12,6 +12,14 @@
 
         var baseUrl = 'http://localhost:49588/api/mates';
 
+        return {
+            getMateById: getMateById,
+            getAllMates: getAllMates,
+            addMateWithDetails: addMateWithDetails,
+            updateMateWithDetails: updateMateWithDetails,
+            deleteMateById: deleteMateById
+        };
+
         function functionFailed(error) {
             console.log('XHR Failed. Error is :' + error);
         }
@@ -74,15 +82,5 @@
                 .then(deleteMateByIdComplete)
                 .catch(functionFailed);
         }
-
-        var service = {
-            getMateById: getMateById,
-            getAllMates: getAllMates,
-            addMateWithDetails: addMateWithDetails,
-            updateMateWithDetails: updateMateWithDetails,
-            deleteMateById: deleteMateById
-        };
-
-        return service;
     }
 })();
