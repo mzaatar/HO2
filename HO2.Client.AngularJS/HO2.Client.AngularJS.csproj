@@ -69,13 +69,14 @@
     <Content Include="app\core\httpservices.js" />
     <Content Include="app\mates\config.route.js" />
     <Content Include="app\mates\mates.module.js" />
-    <Content Include="jk.config.js" />
+    <Content Include="test\karma.conf.js" />
     <Content Include="packages.config" />
     <Content Include="scripts\angular.min.js.map" />
     <Content Include="scripts\angular-route.min.js.map" />
     <Content Include="scripts\angular-animate.min.js.map" />
     <Content Include="scripts\angular-sanitize.min.js.map" />
-    <Content Include=".yo-rc.json" />
+    <Content Include="test\.yo-rc.json" />
+    <Content Include="test\specs\testAppModule.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,7 +111,6 @@
     <Folder Include="app\groups\" />
     <Folder Include="app\votes\" />
     <Folder Include="contents\" />
-    <Folder Include="test\specs\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

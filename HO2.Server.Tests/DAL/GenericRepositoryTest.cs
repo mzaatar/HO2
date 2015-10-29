@@ -18,7 +18,7 @@ namespace HO2.Server.Tests.DAL
         [SetUp]
         public void SetUp()
         {
-            _db = new HO2Context();//"HO2Context.Test");
+            _db = new HO2Context();
             _repository= new GenericRepository<Mate>(_db);
             _transaction = _db.BeginTransaction();
         }

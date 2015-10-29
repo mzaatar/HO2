@@ -1,0 +1,19 @@
+{
+  "name": "ho2-angularjs_client_test",
+  "version": "0.1",
+  "description": "HO2 angular JS client - unit test using kar",
+  "authors": [
+	"Mohamed Zaatar <mohamed.zaatar@gmail.com>"
+  ],
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+	  "jasmine": "master"
+  }
+}
