@@ -66,7 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\core\core.module.js" />
-    <Content Include="app\core\httpservices.js" />
+    <Content Include="app\core\dataservice.js" />
     <Content Include="app\mates\route.config.js" />
     <Content Include="app\mates\mates.module.js" />
     <Content Include="test\karma.conf.js" />
@@ -88,6 +88,7 @@
     <Content Include="app\Index.html" />
     <Content Include="test\index.html" />
     <Content Include="test\lib\mockData.js" />
+    <Content Include="test\specs\testCoreModule.js" />
     <Content Include="test\specs\testJasmine.js" />
     <Content Include="Web.config" />
   </ItemGroup>

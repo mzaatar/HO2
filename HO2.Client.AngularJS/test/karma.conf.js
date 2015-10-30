@@ -26,10 +26,9 @@ module.exports = function(config) {
       //Your app scripts
       'app/app.module.js',
       'app/app.controller.js',
-      'app/config.route.js',
 
       'app/core/core.module.js',
-      'app/core/httpservices.js',
+      'app/core/dataservice.js',
 
       'app/mates/mates.module.js',
       'app/mates/config.route.js',

@@ -13,12 +13,20 @@
         var baseUrl = 'http://localhost:49588/api/mates';
 
         return {
+            getSomething: getSomething,
             getMateById: getMateById,
             getAllMates: getAllMates,
             addMateWithDetails: addMateWithDetails,
             updateMateWithDetails: updateMateWithDetails,
             deleteMateById: deleteMateById
         };
+
+        function getSomething(name) {
+            return $http.get('somthing.json?name=' + name)
+            .then(function (result) {
+                return result.data;
+        });
+        }
 
         function functionFailed(error) {
             console.log('XHR Failed. Error is :' + error);
