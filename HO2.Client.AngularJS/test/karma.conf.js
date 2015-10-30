@@ -33,6 +33,10 @@ module.exports = function(config) {
       'app/mates/mates.module.js',
       'app/mates/config.route.js',
       'app/mates/mates.controller.js',
+
+      //Your library for testing
+      'test/lib/mockData.js',
+
       //And your specs
         {
             pattern: 'test/specs/*.js',

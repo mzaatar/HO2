@@ -4,14 +4,11 @@ describe("Core Module unit testing", function () {
 
 
     describe("Http service unit testing", function() {
-        
-        //var mockedFactory, $rootScope, $controller;
-
+       
         var dataservice, httpBackend;
 
         beforeEach(function () {
             // load the module.
-            module('app');
             module('app.core');
 
             // get your service, also get $httpBackend
@@ -29,7 +26,7 @@ describe("Core Module unit testing", function () {
             httpBackend.verifyNoOutstandingRequest();
         });
 
-        it('should send the msg and return the response.', function () {
+        it('should send name and return the response.', function () {
             var name = 'Mohamed';
 
             // set up some data for the http call to return and test later.
@@ -55,6 +52,37 @@ describe("Core Module unit testing", function () {
             // (after Angular 1.2.5: be sure to use `toEqual` and not `toBe`
             // as the object will be a copy and not the same instance.)
             expect(result).toEqual(returnData);
+        });
+
+        it('should get all mates.', function() {
+            var returnData = mockData.getMockMates();
+
+            httpBackend.expectGET().respond(returnData);
+
+            var returnedPromise = dataservice.getAllMates();
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
+            expect(result).toEqual(returnData);
+
+        });
+
+
+        it('should send mateId and return it with details', function () {
+            var returnData = mockData.getMockMates();// get the ID ?
+
+            httpBackend.expectGET().respond(returnData);
+
+            var returnedPromise = dataservice.getMateById(22);
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
+            expect(result).toEqual(returnData);
+
         });
     });
 });
