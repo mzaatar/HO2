@@ -67,14 +67,10 @@
   <ItemGroup>
     <Content Include="app\core\core.module.js" />
     <Content Include="app\core\httpservices.js" />
-    <Content Include="app\mates\config.route.js" />
+    <Content Include="app\mates\route.config.js" />
     <Content Include="app\mates\mates.module.js" />
     <Content Include="test\karma.conf.js" />
     <Content Include="packages.config" />
-    <Content Include="scripts\angular.min.js.map" />
-    <Content Include="scripts\angular-route.min.js.map" />
-    <Content Include="scripts\angular-animate.min.js.map" />
-    <Content Include="scripts\angular-sanitize.min.js.map" />
     <Content Include="test\.yo-rc.json" />
     <Content Include="test\specs\testAppModule.js" />
     <None Include="Web.Debug.config">
@@ -89,18 +85,10 @@
     <Content Include="app\app.module.js" />
     <Content Include="app\mates\mates.controller.js" />
     <Content Include="app\mates\mates.html" />
-    <Content Include="Index.html" />
-    <Content Include="scripts\angular-animate.js" />
-    <Content Include="scripts\angular-animate.min.js" />
-    <Content Include="scripts\angular-mocks.js" />
-    <Content Include="scripts\angular-route.js" />
-    <Content Include="scripts\angular-route.min.js" />
-    <Content Include="scripts\angular-sanitize.js" />
-    <Content Include="scripts\angular-sanitize.min.js" />
-    <Content Include="scripts\angular.js" />
-    <Content Include="scripts\angular.min.js" />
+    <Content Include="app\Index.html" />
     <Content Include="test\index.html" />
     <Content Include="test\lib\mockData.js" />
+    <Content Include="test\specs\testJasmine.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -110,7 +98,6 @@
     <Folder Include="app\dashboard\" />
     <Folder Include="app\groups\" />
     <Folder Include="app\votes\" />
-    <Folder Include="contents\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -3,7 +3,7 @@
   "version": "0.1",
   "description": "HO2 angular JS client - unit test using kar",
   "authors": [
-	"Mohamed Zaatar <mohamed.zaatar@gmail.com>"
+    "Mohamed Zaatar <mohamed.zaatar@gmail.com>"
   ],
   "main": "index.html",
   "ignore": [
@@ -14,6 +14,11 @@
     "tests"
   ],
   "dependencies": {
-	  "jasmine": "master"
+    "angular": "1.5.0-build.4351+sha.35eada6",
+    "angular-animate": "master",
+    "angular-mocks": "master",
+    "angular-sanitize": "master",
+	"angular-route" : "master",
+    "jasmine": "master"
   }
 }

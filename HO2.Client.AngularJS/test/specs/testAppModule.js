@@ -1,18 +1,17 @@
-﻿describe('Mate Controller test', function() {
+﻿describe('appController test', function() {
+
+    var scope;
+    var ctrl;
 
     beforeEach(module('app'));
 
-    var appController, scope;
-
-    beforeEach(inject(function($rootScope, $controller) {
+    beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
-
-        appController = $controller('appController', {
-            $scope: scope
-        });
+        ctrl = $controller('appController', { $scope: scope });
     }));
-    it('says hello !', function() {
-        expect(scope.greeting).toEqual("Hello, AngularJS. This is Hang Out two project");
-    });
 
+
+    it('should have an initial documentSaved state', function () {
+        expect(scope.message).toEqual('Hello, AngularJS. This is Hang Out two project');
+    });
 });
