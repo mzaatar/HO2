@@ -8,7 +8,7 @@
 
     /* @ngInject */
 
-    function dataservice($http) {
+    function dataservice($http, loggerService) {
 
         var baseUrl = 'http://localhost:49588/api';
         var matesBaseUrl = baseUrl+'/mates';
@@ -23,12 +23,12 @@
         };
 
         function functionFailed(error) {
-            console.log('XHR Failed. Error is :' + error);
+            loggerService.Log('XHR Failed. Error is :' + error);
         }
 
         function getMateById(id) {
             function getMateByIdComplete(response) {
-                console.log("Mate searching for " + id);
+                loggerService.Log("Mate searching for " + id);
                 return response.data;
             }
 
@@ -39,7 +39,7 @@
 
         function getAllMates() {
             function getAllMatesComplete(response) {
-                console.log("get All mates");
+                loggerService.Log("get All mates");
                 return response.data;
             }
             return $http.get(matesBaseUrl)
@@ -50,11 +50,11 @@
 
         function addMateWithDetails(newmate) {
             function addMateWithDetailsComplete(response) {
-                console.log("Addedd successfully");
+                loggerService.Log("Addedd successfully");
                 return response.data;
             }
 
-            console.log("inserting a new user with these details : {" + newmate.Email + "} , {" + newmate.FirstName + "} , {" + newmate.LastName + "} !");
+            loggerService.Log("inserting a new user with these details : {" + newmate.Email + "} , {" + newmate.FirstName + "} , {" + newmate.LastName + "} !");
 
             return $http.post(matesBaseUrl + "/", newmate)
                 .then(addMateWithDetailsComplete)
@@ -64,7 +64,7 @@
 
         function updateMateWithDetails(mate) {
             function updateMateWithDetailsComplete(response) {
-                console.log("Updated successfully");
+                loggerService.Log("Updated successfully");
                 return response.data;
             }
 
@@ -76,8 +76,8 @@
 
         function deleteMateById(id) {
             function deleteMateByIdComplete(response) {
-                console.log("Mate with : " + id + ' deleted !');
-                console.log(response);
+                loggerService.Log("Mate with : " + id + ' deleted !');
+                loggerService.Log(response);
                 return response.data;
             }
 

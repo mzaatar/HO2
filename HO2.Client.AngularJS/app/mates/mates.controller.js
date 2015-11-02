@@ -7,7 +7,7 @@
 
     /* @ngInject */
 
-    function MatesController($scope, $q, dataservice)
+        function MatesController($scope, $q, dataservice)
     {
         console.log("I'm in MatesController");
         var vm = this;

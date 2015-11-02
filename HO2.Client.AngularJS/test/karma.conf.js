@@ -34,6 +34,7 @@ module.exports = function(config) {
 
       'app/core/core.module.js',
       'app/core/dataservice.js',
+      'app/core/loggerService.js',
 
       'app/mates/mates.module.js',
       'app/mates/route.config.js',

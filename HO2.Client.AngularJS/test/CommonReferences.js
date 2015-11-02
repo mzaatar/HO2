@@ -13,6 +13,7 @@
 
 ///<reference path="~/app/core/core.module.js"/>
 ///<reference path="~/app/core/dataservice.js"/>
+///<reference path="~/app/core/loggerService.js"/>
 
 ///<reference path="~/app/mates/mates.module.js"/>
 ///<reference path="~/app/mates/mates.controller.js"/>

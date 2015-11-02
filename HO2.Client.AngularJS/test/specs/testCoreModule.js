@@ -101,4 +101,42 @@ describe("Core Module tests : ", function () {
             expect(result).toEqual(returnData);
         });
     });
+
+    describe("Logger tests : ", function() {
+        var fakeloggingprovider;
+
+        beforeEach(function() {
+            module('app.core', function() {});
+
+            inject(function(_loggerService_) {
+                fakeloggingprovider = _loggerService_;
+            });
+
+            spyOn(console, 'log');
+        });
+
+        it('should log message and console should recieve it', function() {
+            var logText = 'test log';
+            fakeloggingprovider.Log(logText);
+            expect(console.log).toHaveBeenCalled();
+        });
+
+        it('should warn message and console should recieve it', function () {
+            var logText = 'test log';
+            fakeloggingprovider.Warn(logText);
+            expect(console.log).toHaveBeenCalled();
+        });
+
+        it('should Error message and console should recieve it', function () {
+            var logText = 'test log';
+            fakeloggingprovider.Error(logText);
+            expect(console.log).toHaveBeenCalled();
+        });
+
+        it('should Debug message and console should recieve it', function () {
+            var logText = 'test log';
+            fakeloggingprovider.Debug(logText);
+            expect(console.log).toHaveBeenCalled();
+        });
+    });
 });
