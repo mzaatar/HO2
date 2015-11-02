@@ -1,4 +1,6 @@
-﻿'use strict';
+﻿///<reference path="~/test/CommonReferences.js"/>
+
+'use strict';
 
 describe("Core Module unit testing", function () {
 
