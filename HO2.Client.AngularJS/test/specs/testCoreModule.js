@@ -1,17 +1,15 @@
-﻿'use strict';
+﻿///<reference path="~/test/CommonReferences.js"/>
 
-describe("Core Module unit testing", function () {
+'use strict';
 
+describe("Core Module tests : ", function () {
 
-    describe("Http service unit testing", function() {
-        
-        //var mockedFactory, $rootScope, $controller;
+    describe("Http service tests : ", function() {
 
-        var dataservice, httpBackend;
+        var dataservice, httpBackend, matesUrl;
 
         beforeEach(function () {
             // load the module.
-            module('app');
             module('app.core');
 
             // get your service, also get $httpBackend
@@ -19,6 +17,7 @@ describe("Core Module unit testing", function () {
             inject(function ($httpBackend, _dataservice_) {
                 dataservice = _dataservice_;
                 httpBackend = $httpBackend;
+                matesUrl = dataservice.matesBaseUrl;
             });
         });
 
@@ -29,31 +28,76 @@ describe("Core Module unit testing", function () {
             httpBackend.verifyNoOutstandingRequest();
         });
 
-        it('should send the msg and return the response.', function () {
-            var name = 'Mohamed';
+        it('should get all mates.', function() {
+            var returnData = mockData.getMockMates();
 
-            // set up some data for the http call to return and test later.
-            var returnData = 'Im HttpServices and I feel Ok !';
-
-            // expectGET to make sure this is called once.
-            httpBackend.expectGET('somthing.json?name='+name).respond(returnData);
-
-            // make the call.
-            var returnedPromise = dataservice.getSomething(name);
-
-            // set up a handler for the response, that will put the result
-            // into a variable in this scope for you to test.
+            httpBackend.expectGET(matesUrl).respond(returnData);
+            
+            var returnedPromise = dataservice.getAllMates();
             var result;
             returnedPromise.then(function (response) {
                 result = response;
             });
-
-            // flush the backend to "execute" the request to do the expectedGET assertion.
             httpBackend.flush();
+            expect(result).toEqual(returnData);
 
-            // check the result. 
-            // (after Angular 1.2.5: be sure to use `toEqual` and not `toBe`
-            // as the object will be a copy and not the same instance.)
+        });
+
+        it('should send mate Id and return it with details', function () {
+            var returnData = mockData.getMockMates()[0];
+
+            httpBackend.expectGET(matesUrl+ '/' + returnData.Id).respond(returnData);
+
+            var returnedPromise = dataservice.getMateById(22);
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
+            expect(result).toEqual(returnData);
+        });
+
+
+        it('should add mate and return it', function() {
+            var returnData = mockData.getMockMates()[0];
+
+            httpBackend.expectPOST(matesUrl + '/', returnData).respond(returnData);
+
+            var returnedPromise = dataservice.addMateWithDetails(returnData);
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
+            expect(result).toEqual(returnData);
+        });
+
+        it('should update mate details and save it', function() {
+            var returnData = mockData.getMockMates()[0];
+            returnData.FirstName = 'Updated Name';
+
+            httpBackend.expectPUT(matesUrl + '/', returnData).respond(returnData);
+
+            var returnedPromise = dataservice.updateMateWithDetails(returnData);
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
+            expect(result).toEqual(returnData);
+        });
+
+        it('should delete mate by Id and check methdo result', function () {
+            var returnData = mockData.getMockMates()[0];
+
+            httpBackend.expectDELETE(matesUrl + '/' + returnData.Id).respond(function (method, data) { return [204, returnData] });
+
+            var returnedPromise = dataservice.deleteMateById(returnData.Id);
+            var result;
+            returnedPromise.then(function (response) {
+                result = response;
+            });
+            httpBackend.flush();
             expect(result).toEqual(returnData);
         });
     });

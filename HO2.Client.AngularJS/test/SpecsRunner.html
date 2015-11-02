@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <title>Jasmine Spec Runner</title>
+    <!-- Jasmine files -->
+    <link rel="stylesheet" href="../bower_components/jasmine/lib/jasmine-core/jasmine.css">
+    <link rel="shortcut" type="image/png" href="../bower_components/jasmine/images/jasmine_favicon.png">
+
+    <script src="../bower_components/jasmine/lib/jasmine-core/jasmine.js"></script>
+    <script src="../bower_components/jasmine/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="../bower_components/jasmine/lib/jasmine-core/boot.js"></script>
+
+    <!-- Angular JS files -->
+    <script type="text/javascript" src="../bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-mocks/angular-mocks.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+
+    <!-- angular app files -->
+    <script type="text/javascript" src="../app/app.module.js"></script>
+    <script type="text/javascript" src="../app/app.controller.js"></script>
+
+    <!-- Core Module-->
+    <script type="text/javascript" src="../app/core/core.module.js"></script>
+    <script type="text/javascript" src="../app/core/dataservice.js"></script>
+
+    <!-- Mate Module -->
+    <script type="text/javascript" src="../app/mates/mates.module.js"></script>
+    <script type="text/javascript" src="../app/mates/mates.controller.js"></script>
+    <script type="text/javascript" src="../app/mates/route.config.js"></script>
+
+    <!-- test files -->
+    <script type="text/javascript" src="../test/lib/mockData.js"></script>
+    <script type="text/javascript" src="../test/specs/testJasmine.js"></script>
+    <script type="text/javascript" src="../test/specs/testAppModule.js"></script>
+    <script type="text/javascript" src="../test/specs/testCoreModule.js"></script>
+</head>
+<body>
+
+</body>
+
+
+</html>
+
+<script type="text/javascript">
+    (function() {
+      var jasmineEnv = jasmine.getEnv();
+      jasmineEnv.updateInterval = 1000;
+
+      var htmlReporter = new jasmine.HtmlReporter();
+
+      jasmineEnv.addReporter(htmlReporter);
+
+      jasmineEnv.specFilter = function(spec) {
+        return htmlReporter.specFilter(spec);
+      };
+
+      var currentWindowOnload = window.onload;
+
+      window.onload = function() {
+        if (currentWindowOnload) {
+          currentWindowOnload();
+        }
+        execJasmine();
+      };
+
+      function execJasmine() {
+        jasmineEnv.execute();
+      }
+
+    })();
+</script>

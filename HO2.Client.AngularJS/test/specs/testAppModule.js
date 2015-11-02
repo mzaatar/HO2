@@ -1,4 +1,6 @@
-﻿describe('appController test', function() {
+﻿///<reference path="~/test/CommonReferences.js"/>
+
+describe('Main Module tests : ', function () {
 
     var scope;
     var ctrl;
@@ -11,7 +13,7 @@
     }));
 
 
-    it('should have an initial documentSaved state', function () {
+    it('Match $scope.message', function () {
         expect(scope.message).toEqual('Hello, AngularJS. This is Hang Out two project');
     });
 });

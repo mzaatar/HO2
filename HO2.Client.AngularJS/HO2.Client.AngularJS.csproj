@@ -72,6 +72,7 @@
     <Content Include="test\karma.conf.js" />
     <Content Include="packages.config" />
     <Content Include="test\.yo-rc.json" />
+    <Content Include="test\CommonReferences.js" />
     <Content Include="test\specs\testAppModule.js" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -86,7 +87,7 @@
     <Content Include="app\mates\mates.controller.js" />
     <Content Include="app\mates\mates.html" />
     <Content Include="app\Index.html" />
-    <Content Include="test\index.html" />
+    <Content Include="test\SpecsRunner.html" />
     <Content Include="test\lib\mockData.js" />
     <Content Include="test\specs\testCoreModule.js" />
     <Content Include="test\specs\testJasmine.js" />

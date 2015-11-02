@@ -5,7 +5,7 @@ module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '../',
+    basePath: "../",
 
 
     // frameworks to use
@@ -17,11 +17,16 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       //Then angular-modules
+      'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
-      'bower_components/angular-mocks/angular-mocks.js',
+      
       //Other libs
+
+
+       //Your library for testing
+      'test/lib/mockData.js',
 
       //Your app scripts
       'app/app.module.js',
@@ -31,8 +36,11 @@ module.exports = function(config) {
       'app/core/dataservice.js',
 
       'app/mates/mates.module.js',
-      'app/mates/config.route.js',
+      'app/mates/route.config.js',
       'app/mates/mates.controller.js',
+
+      
+
       //And your specs
         {
             pattern: 'test/specs/*.js',

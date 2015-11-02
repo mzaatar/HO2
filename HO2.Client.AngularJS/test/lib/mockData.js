@@ -14,9 +14,9 @@ var mockData = (function () {
                 'LastName': 'Zaatar'
             }, {
                 'Id': 23,
-                'Email': 'Cormac@gmail.net',
-                'FirstName': 'Cormac',
-                'LastName': 'Cormac'
+                'Email': 'Apple.Iphone@gmail.net',
+                'FirstName': 'Apple',
+                'LastName': 'Iphone'
             }, {
                 'Id': 24,
                 'Email': 'unit.test@gmail.com',
@@ -29,9 +29,9 @@ var mockData = (function () {
                 'LastName': 'Jasmine'
             }, {
                 'Id': 26,
-                'Email': 'Ahmed.Helmi@gmail.com',
-                'FirstName': 'Ahmed',
-                'LastName': 'Helmi'
+                'Email': 'xyz.abc@gmail.com',
+                'FirstName': 'xyz',
+                'LastName': 'abc'
             }
         ];
     }
