@@ -10,23 +10,17 @@
 
     function dataservice($http) {
 
-        var baseUrl = 'http://localhost:49588/api/mates';
+        var baseUrl = 'http://localhost:49588/api';
+        var matesBaseUrl = baseUrl+'/mates';
 
         return {
-            getSomething: getSomething,
+            matesBaseUrl: matesBaseUrl,
             getMateById: getMateById,
             getAllMates: getAllMates,
             addMateWithDetails: addMateWithDetails,
             updateMateWithDetails: updateMateWithDetails,
             deleteMateById: deleteMateById
         };
-
-        function getSomething(name) {
-            return $http.get('somthing.json?name=' + name)
-            .then(function (result) {
-                return result.data;
-        });
-        }
 
         function functionFailed(error) {
             console.log('XHR Failed. Error is :' + error);
@@ -38,7 +32,7 @@
                 return response.data;
             }
 
-            return $http.get(baseUrl + "/" + id)
+            return $http.get(matesBaseUrl + "/" + id)
                 .then(getMateByIdComplete)
                 .catch(functionFailed);
         };
@@ -48,7 +42,7 @@
                 console.log("get All mates");
                 return response.data;
             }
-            return $http.get(baseUrl)
+            return $http.get(matesBaseUrl)
                 .then(getAllMatesComplete)
                 .catch(functionFailed);
         }
@@ -60,9 +54,9 @@
                 return response.data;
             }
 
-            console.log("inserting a new user with these details : {" + newmate.email + "} , {" + newmate.firstname + "} , {" + newmate.lastname + "}");
+            console.log("inserting a new user with these details : {" + newmate.Email + "} , {" + newmate.FirstName + "} , {" + newmate.LastName + "} !");
 
-            return $http.post(baseUrl + "/", newmate)
+            return $http.post(matesBaseUrl + "/", newmate)
                 .then(addMateWithDetailsComplete)
                 .catch(functionFailed);
         }
@@ -70,11 +64,11 @@
 
         function updateMateWithDetails(mate) {
             function updateMateWithDetailsComplete(response) {
-                console.log("Udpated successfully");
+                console.log("Updated successfully");
                 return response.data;
             }
 
-            return $http.put(baseUrl + "/", mate)
+            return $http.put(matesBaseUrl + "/", mate)
                 .then(updateMateWithDetailsComplete)
                 .catch(functionFailed);
         }
@@ -83,10 +77,11 @@
         function deleteMateById(id) {
             function deleteMateByIdComplete(response) {
                 console.log("Mate with : " + id + ' deleted !');
+                console.log(response);
                 return response.data;
             }
 
-            return $http.delete(baseUrl + "/" + id)
+            return $http.delete(matesBaseUrl + "/" + id)
                 .then(deleteMateByIdComplete)
                 .catch(functionFailed);
         }

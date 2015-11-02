@@ -1,7 +1,6 @@
 ﻿///<reference path="~/test/CommonReferences.js"/>
 
-
-describe('appController test', function () {
+describe('Main Module tests : ', function () {
 
     var scope;
     var ctrl;
